@@ -1,0 +1,6 @@
+cache-path;E:\New\MonoGames\IntoTheDungeon\Android\obj\Release\net6.0-android\lp\148\jl\res\xml\microsoft_maui_essentials_fileprovider_file_paths.xml
+external-cache-path;E:\New\MonoGames\IntoTheDungeon\Android\obj\Release\net6.0-android\lp\148\jl\res\xml\microsoft_maui_essentials_fileprovider_file_paths.xml
+external-path;E:\New\MonoGames\IntoTheDungeon\Android\obj\Release\net6.0-android\lp\148\jl\res\xml\microsoft_maui_essentials_fileprovider_file_paths.xml
+paths;E:\New\MonoGames\IntoTheDungeon\Android\obj\Release\net6.0-android\lp\148\jl\res\xml\microsoft_maui_essentials_fileprovider_file_paths.xml
+resources;obj\Release\net6.0-android\res\values\strings.xml
+string;obj\Release\net6.0-android\res\values\strings.xml

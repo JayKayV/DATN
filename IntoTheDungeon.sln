@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Android", "Android\Android.csproj", "{978F28C1-E9EA-4DEA-95E2-D72E72AC266B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desktop", "Desktop\Desktop.csproj", "{C2811BA3-6B89-4406-AEFC-474C655C58E0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{77675378-E6C0-4947-9EEA-D6B9146A1B91}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IntoTheDungeon", "Shared\Shared\IntoTheDungeon.shproj", "{A0CDBD0E-3A41-42B7-9425-A838BC2C7383}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{978F28C1-E9EA-4DEA-95E2-D72E72AC266B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{978F28C1-E9EA-4DEA-95E2-D72E72AC266B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{978F28C1-E9EA-4DEA-95E2-D72E72AC266B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{978F28C1-E9EA-4DEA-95E2-D72E72AC266B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2811BA3-6B89-4406-AEFC-474C655C58E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2811BA3-6B89-4406-AEFC-474C655C58E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2811BA3-6B89-4406-AEFC-474C655C58E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2811BA3-6B89-4406-AEFC-474C655C58E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77675378-E6C0-4947-9EEA-D6B9146A1B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77675378-E6C0-4947-9EEA-D6B9146A1B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77675378-E6C0-4947-9EEA-D6B9146A1B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77675378-E6C0-4947-9EEA-D6B9146A1B91}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DAFB0870-992B-49EB-B4C8-D723201E3DDE}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Shared\Shared\Shared.projitems*{978f28c1-e9ea-4dea-95e2-d72e72ac266b}*SharedItemsImports = 5
+		Shared\Shared\Shared.projitems*{a0cdbd0e-3a41-42b7-9425-a838bc2c7383}*SharedItemsImports = 13
+		Shared\Shared\Shared.projitems*{c2811ba3-6b89-4406-aefc-474c655c58e0}*SharedItemsImports = 5
+	EndGlobalSection
+EndGlobal

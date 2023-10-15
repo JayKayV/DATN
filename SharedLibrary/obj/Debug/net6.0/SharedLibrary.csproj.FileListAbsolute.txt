@@ -1,0 +1,12 @@
+E:\New\MonoGames\IntoTheDungeon\SharedLibrary\bin\Debug\net6.0\SharedLibrary.deps.json
+E:\New\MonoGames\IntoTheDungeon\SharedLibrary\bin\Debug\net6.0\SharedLibrary.dll
+E:\New\MonoGames\IntoTheDungeon\SharedLibrary\bin\Debug\net6.0\SharedLibrary.pdb
+E:\New\MonoGames\IntoTheDungeon\SharedLibrary\obj\Debug\net6.0\SharedLibrary.csproj.AssemblyReference.cache
+E:\New\MonoGames\IntoTheDungeon\SharedLibrary\obj\Debug\net6.0\SharedLibrary.GeneratedMSBuildEditorConfig.editorconfig
+E:\New\MonoGames\IntoTheDungeon\SharedLibrary\obj\Debug\net6.0\SharedLibrary.AssemblyInfoInputs.cache
+E:\New\MonoGames\IntoTheDungeon\SharedLibrary\obj\Debug\net6.0\SharedLibrary.AssemblyInfo.cs
+E:\New\MonoGames\IntoTheDungeon\SharedLibrary\obj\Debug\net6.0\SharedLibrary.csproj.CoreCompileInputs.cache
+E:\New\MonoGames\IntoTheDungeon\SharedLibrary\obj\Debug\net6.0\SharedLibrary.dll
+E:\New\MonoGames\IntoTheDungeon\SharedLibrary\obj\Debug\net6.0\refint\SharedLibrary.dll
+E:\New\MonoGames\IntoTheDungeon\SharedLibrary\obj\Debug\net6.0\SharedLibrary.pdb
+E:\New\MonoGames\IntoTheDungeon\SharedLibrary\obj\Debug\net6.0\ref\SharedLibrary.dll

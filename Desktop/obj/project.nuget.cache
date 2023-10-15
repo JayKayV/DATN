@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "JMZxXyue2n/IuvGfaGKTG9eXh8I4LGf/99mv+2p5GMLQuL6bTOpiVItze80uYfPus+tLwxHjDxjVKdhQ3Htozw==",
+  "success": true,
+  "projectFilePath": "E:\\New\\MonoGames\\IntoTheDungeon\\Desktop\\Desktop.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
+  ],
+  "logs": []
+}

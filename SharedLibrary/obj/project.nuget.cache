@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "XC+HS8Nigek6i1tJzqyW2sb0RWtUwB8JwgULaXuVTNSDF0t9voS1qIoJ8nToWIWvx3ijoUbYuokkckMutduLhQ==",
+  "success": true,
+  "projectFilePath": "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibrary\\SharedLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
+  ],
+  "logs": []
+}

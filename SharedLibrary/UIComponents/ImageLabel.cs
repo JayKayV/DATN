@@ -6,6 +6,9 @@ using SharedLibrary.UIComponents.Events.EventArgs;
 using SharedLibrary.UIComponents.Interfaces;
 using System;
 using SharedLibrary.Input;
+using System.Xml;
+using SharedLibrary.Ultility;
+using Microsoft.Xna.Framework.Content;
 
 namespace SharedLibrary.UIComponents
 {
@@ -117,6 +120,19 @@ namespace SharedLibrary.UIComponents
         protected override void ApplyStyle(ImageLabel style)
         {
             this._image = style.Image;
+        }
+
+        public static ImageLabel LoadFromXml(XmlNode node, ContentManager contentManager, GraphicsDevice graphicsDevice)
+        {
+            XmlAttributeCollection attributeCollection = node.Attributes;
+            string name = XMLHelper.GetAttribute(attributeCollection, "name", "imageButton", false);
+            string src = XMLHelper.GetAttribute(attributeCollection, "src");
+            int x = int.Parse(XMLHelper.GetAttribute(attributeCollection, "x", "0", false));
+            int y = int.Parse(XMLHelper.GetAttribute(attributeCollection, "y", "0", false));
+
+            ImageLabel _label = new ImageLabel(contentManager.Load<Texture2D>(src), new Point(x, y));
+            _label.Name = name;
+            return _label;
         }
     }
 }

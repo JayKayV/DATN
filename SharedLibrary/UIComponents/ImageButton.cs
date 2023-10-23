@@ -1,12 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SharedLibrary.Input;
 using SharedLibrary.UIComponents.Base;
 using SharedLibrary.UIComponents.Events.EventArgs;
 using SharedLibrary.UIComponents.Interfaces;
+using SharedLibrary.Ultility;
 using System;
 using System.Diagnostics;
+using System.Xml;
 
 namespace SharedLibrary.UIComponents
 {
@@ -77,6 +80,21 @@ namespace SharedLibrary.UIComponents
                 if (hoverStyle != null) 
                     hoverStyle.Image = value;
             }
+        }
+
+        public static ImageButton LoadFromXml(XmlNode node, ContentManager contentManager, GraphicsDevice graphicsDevice)
+        {
+            XmlAttributeCollection attributeCollection = node.Attributes;
+            string name = XMLHelper.GetAttribute(attributeCollection, "name", "imageButton", false);
+            string bgColor = XMLHelper.GetAttribute(attributeCollection, "bgColor", "000000", false);
+            string src = XMLHelper.GetAttribute(attributeCollection, "src");
+            int x = int.Parse(XMLHelper.GetAttribute(attributeCollection, "x", "0", false));
+            int y = int.Parse(XMLHelper.GetAttribute(attributeCollection, "y", "0", false));
+
+            ImageLabel _label = new ImageLabel(contentManager.Load<Texture2D>(src), new Point(0, 0));
+            ImageButton _button = new ImageButton(graphicsDevice, _label, new Point(x, y), ColorHelper.GetColorFrom(bgColor));
+            _button.Name = name;
+            return _button;
         }
     }
 }

@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Xml;
 
 namespace SharedLibrary.Scene
 {
@@ -15,12 +17,14 @@ namespace SharedLibrary.Scene
     //this class must be instatiated only once!
     public class SceneManager
     {
-        private List<BaseScene> scenes = new List<BaseScene>();
-        private BaseScene currentScene;
+        private List<Scene> scenes = new List<Scene>();
+        private Scene currentScene;
 
         private GameWindow gameWindow;
         private ContentManager contentManager;
         private GraphicsDevice graphicsDevice;
+
+        private XmlElement scenesNode;
 
         public SceneManager(GameWindow gameWindow, ContentManager contentManager, GraphicsDevice graphicsDevice) 
         {
@@ -29,10 +33,47 @@ namespace SharedLibrary.Scene
             this.graphicsDevice = graphicsDevice;
         }
 
-        public SceneManager(IEnumerable<BaseScene> scenes, GameWindow gameWindow, ContentManager contentManager, GraphicsDevice graphicsDevice)
+        public void Init()
         {
-            foreach (BaseScene baseScene in scenes)
-                this.scenes.Add(baseScene);
+            XmlDocument doc = SceneLoader.LoadAll();
+            if (doc != null)
+            {
+                scenesNode = doc.DocumentElement;
+                if (scenesNode.ChildNodes.Count > 0)
+                {
+                    foreach (XmlNode sceneNode in scenesNode.ChildNodes)
+                    {
+                        Scene scene = new Scene(sceneNode.Attributes.GetNamedItem("name").Value);
+                        AddScene(scene);
+                    }
+                    currentScene = scenes[0];
+                }
+            }
+        }
+
+        public void Load()
+        {
+            string currentSceneName = currentScene.Name;
+
+            XmlNamespaceManager nsmgr = new XmlNamespaceManager(scenesNode.OwnerDocument.NameTable);
+            nsmgr.AddNamespace("tg", "http://testgame.com");
+
+            XmlNode? sceneNode = scenesNode.SelectSingleNode($"descendant::tg:scene[@name=\'{currentSceneName}\']", nsmgr);
+            if (sceneNode ==  null)
+                throw new AccessViolationException("Scene information deleted while reading...");
+
+            XmlNodeList? uiNodes = sceneNode.SelectNodes("descendant::tg:ui_object", nsmgr);
+            XmlNodeList? scriptNodes = sceneNode.SelectNodes("descendant::tg:script", nsmgr);
+
+            if (uiNodes != null)
+                currentScene.LoadUiContent(uiNodes, contentManager, graphicsDevice);
+            if (scriptNodes != null)
+                currentScene.LoadScripts(scriptNodes, contentManager, graphicsDevice);
+        }
+
+        public SceneManager(IEnumerable<Scene> scenes, GameWindow gameWindow, ContentManager contentManager, GraphicsDevice graphicsDevice)
+        {
+            this.scenes.AddRange(scenes);
 
             this.gameWindow = gameWindow;
             this.contentManager = contentManager;
@@ -42,42 +83,43 @@ namespace SharedLibrary.Scene
         public event EventHandler<OnSceneLoadedArgs>? OnSceneLoaded;
 
         public void LoadSceneByName(string name) 
-        { 
-            foreach (BaseScene scene in scenes)
+        {
+            Scene? nextScene = scenes.Find(s => s.Name == name);
+            if (nextScene != null)
             {
-                if (scene.Name == name)
-                {
-                    currentScene = scene;
-                    currentScene.LoadContent(contentManager, graphicsDevice);
+                currentScene.Destroy();
+                currentScene = nextScene;
 
-                    OnSceneLoaded?.Invoke(this, new OnSceneLoadedArgs(currentScene.Name));
-                    break;
-                }
+                OnSceneLoaded?.Invoke(this, new OnSceneLoadedArgs(currentScene.Name));
             }
+            else
+                throw new ArgumentException(string.Format("No scene named {0} in gameObjectManager")); 
         }
 
-        public void AddScene(BaseScene scene)
+        public void AddScene(Scene scene)
         {
             scene.SetSceneManager(this);
             scene.SetWindow(this.gameWindow);
             scenes.Add(scene);
         }
 
-        public void RemoveScene(BaseScene scene)
+        public void RemoveScene(Scene scene)
         {
             scenes.Remove(scene);
         }
 
         public void Update(GameTime gameTime)
         {
-            currentScene.Update(gameTime);
+            if (currentScene != null) 
+                currentScene.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
 
-            currentScene.Draw(spriteBatch);
+            if (currentScene != null)
+                currentScene.Draw(spriteBatch);
 
             spriteBatch.End();
         }

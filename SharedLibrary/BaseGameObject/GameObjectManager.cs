@@ -4,14 +4,15 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 
 namespace SharedLibrary.BaseGameObject
 {
     public class GameObjectManager
     {
-        private BaseScene scene;
+        private Scene.Scene scene;
         private List<GameObject> gameObjects;
-        public GameObjectManager(BaseScene scene)
+        public GameObjectManager(Scene.Scene scene)
         {
             this.gameObjects = new List<GameObject>();
             this.scene = scene;
@@ -35,6 +36,22 @@ namespace SharedLibrary.BaseGameObject
 
         //CRUD
         //Read
+        public GameObject GetGameObjectByName(string name)
+        {
+            GameObject? obj = gameObjects.Find(go => go.Name == name);
+            if (obj == null)
+                throw new ArgumentException("Object name doesn\'t exist");
+            return obj;
+        }
+
+        public GameObject GetGameObjectByPred(Predicate<GameObject> predicate)
+        {
+            GameObject? obj = gameObjects.Find(predicate);
+            if (obj == null)
+                throw new ArgumentException("Object name doesn\'t exist");
+            return obj;
+        }
+
         public IEnumerable<GameObject> GetGameObjects()
         {
             return gameObjects;
@@ -56,14 +73,26 @@ namespace SharedLibrary.BaseGameObject
             }
         }
 
+        public bool Exists(string name)
+        {
+            GameObject? obj = gameObjects.Find(go => go.Name == name);
+            return obj != null;
+        }  
+
         //Create
         public void AddGameObject(GameObject gameObject)
         {
+            string objName = gameObject.Name;
+            if (Exists(objName))
+                Debug.WriteLine(String.Format("[Warning]: {0} already exists", objName));
             gameObjects.Add(gameObject);
         }
         public void AddGameObjects(params GameObject[] gameObjects)
         {
-            this.gameObjects.AddRange(gameObjects);
+            foreach (var gameObject in gameObjects)
+            {
+                AddGameObject(gameObject);
+            }
         }
 
         //Delete

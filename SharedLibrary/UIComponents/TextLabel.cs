@@ -6,6 +6,9 @@ using SharedLibrary.UIComponents.Events.EventArgs;
 using SharedLibrary.UIComponents.Interfaces;
 using System;
 using SharedLibrary.Input;
+using Microsoft.Xna.Framework.Content;
+using SharedLibrary.Ultility;
+using System.Xml;
 
 namespace SharedLibrary.UIComponents
 {
@@ -155,6 +158,21 @@ namespace SharedLibrary.UIComponents
             this._text = style.Text;
             this.color = style.Color;
             this._rect = new Rectangle(style._rect.Location, style._rect.Size);
+        }
+
+        public static TextLabel LoadFromXml(XmlNode node, ContentManager contentManager)
+        {
+            XmlAttributeCollection attributeCollection = node.Attributes;
+            string name = XMLHelper.GetAttribute(attributeCollection, "name", "textLabel", false);
+            string font = XMLHelper.GetAttribute(attributeCollection, "font");
+            string text = XMLHelper.GetAttribute(attributeCollection, "text", node.InnerText, false);
+
+            int x = int.Parse(XMLHelper.GetAttribute(attributeCollection, "x", "0", false));
+            int y = int.Parse(XMLHelper.GetAttribute(attributeCollection, "y", "0", false));
+
+            TextLabel _label = new TextLabel(contentManager.Load<SpriteFont>(font), text, new Point(x, y));
+            _label.Name = name;
+            return _label;
         }
     }
 }

@@ -27,7 +27,7 @@ namespace SharedLibrary.BaseGameObject
         {
             this.name = name;
         }
-        public string Name { get { return name; } }
+        public string Name { get; set; }
         public bool Visible { 
             get { return _visible; } 
             set {

@@ -30,6 +30,7 @@ namespace IntoTheDungeon
             _graphics.ApplyChanges();
 
             _sceneManager = new SceneManager(this.Window, this.Content, this.GraphicsDevice);
+            _sceneManager.Init();
             base.Initialize();
         }
 
@@ -37,8 +38,7 @@ namespace IntoTheDungeon
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _sceneManager.AddScene(new MainMenuScene());
-            _sceneManager.LoadSceneByName("Main Menu");
+            _sceneManager.Load();
             // TODO: use this.Content to load your game content here
         }
 

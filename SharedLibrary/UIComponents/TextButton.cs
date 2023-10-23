@@ -7,6 +7,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Diagnostics;
+using Microsoft.Xna.Framework.Content;
+using System.Xml;
+using SharedLibrary.Ultility;
 
 namespace SharedLibrary.UIComponents
 {
@@ -87,6 +90,23 @@ namespace SharedLibrary.UIComponents
                 if (clickedStyle != null)
                     clickedStyle.TextColor = value;
             }
+        }
+
+        public static TextButton LoadFromXml(XmlNode node, ContentManager contentManager, GraphicsDevice graphicsDevice)
+        {
+            XmlAttributeCollection attributeCollection = node.Attributes;
+            string name = XMLHelper.GetAttribute(attributeCollection, "name", "textLabel", false);
+            string bgColor = XMLHelper.GetAttribute(attributeCollection, "bgColor", "000000", false);
+            string font = XMLHelper.GetAttribute(attributeCollection, "font");
+            string text = XMLHelper.GetAttribute(attributeCollection, "text", node.InnerText, false);
+
+            int x = int.Parse(XMLHelper.GetAttribute(attributeCollection, "x", "0", false));
+            int y = int.Parse(XMLHelper.GetAttribute(attributeCollection, "y", "0", false));
+
+            TextLabel _label = new TextLabel(contentManager.Load<SpriteFont>(font), text, new Point(0, 0));
+            TextButton _button = new TextButton(graphicsDevice, _label, new Point(x, y), ColorHelper.GetColorFrom(bgColor));
+            _button.Name = name;
+            return _button;
         }
     } 
 }

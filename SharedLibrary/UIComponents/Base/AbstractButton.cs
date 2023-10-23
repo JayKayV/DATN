@@ -13,6 +13,8 @@ namespace SharedLibrary.UIComponents.Base
         protected UiBorder border;
         protected Texture2D backgroundTexture;
 
+        protected bool enableBackground = true;
+
         /// <summary>
         ///     top->right->bottom->left
         /// </summary>
@@ -58,8 +60,11 @@ namespace SharedLibrary.UIComponents.Base
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.backgroundTexture, this._rect, Color.White);
-            this.border.Draw(spriteBatch);
+            if (enableBackground)
+            {
+                spriteBatch.Draw(this.backgroundTexture, this._rect, Color.White);
+                this.border.Draw(spriteBatch);
+            }
             this._label.Draw(spriteBatch);
         }
 
@@ -223,6 +228,21 @@ namespace SharedLibrary.UIComponents.Base
             Debug.WriteLine(clone._rect.ToString());
 
             return clone;
+        }
+
+        public bool EnableBackground
+        {
+            get => enableBackground;
+            set
+            {
+                enableBackground = value;
+                if (originalStyle != null)
+                    originalStyle.EnableBackground = value;
+                if (hoverStyle != null)
+                    hoverStyle.EnableBackground = value;
+                if (clickedStyle != null)
+                    clickedStyle.EnableBackground = value;
+            }
         }
     }
 }

@@ -9,11 +9,12 @@
       <xs:sequence>
         <xs:element name="scene" minOccurs="0" maxOccurs="unbounded">
           <xs:complexType>
-              
               <xs:sequence>
+                <xs:element name="script" minOccurs="0" maxOccurs="unbounded" type="xs:string"></xs:element>
                 <xs:element name="ui_object" minOccurs="0" maxOccurs="unbounded">
                   <xs:complexType>
                     <xs:attribute name="type" type="xs:string" use="required"/>
+                    <xs:attribute name="name" type="xs:string"/>
                     <xs:attribute name="x" type="xs:integer" default="0"/>
                     <xs:attribute name="y" type="xs:integer" default="0"/>
                     <xs:anyAttribute/>

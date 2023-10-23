@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<scenesx xmlns="http://testgame.com">
+  <scene name="Main Menu">
+    <script>IntoTheDungeon.Scenes.MainMenuScene</script>
+    <ui_object type="imageButton" name="testButton" src="GUI_TestButtons/RedButton-Active"></ui_object>
+  </scene>
+</scenesx>

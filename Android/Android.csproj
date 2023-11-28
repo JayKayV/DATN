@@ -20,5 +20,5 @@
     <Message Text="Restoring dotnet tools" Importance="High" />
     <Exec Command="dotnet tool restore" />
   </Target>
-  <Import Project="..\Shared\Shared\Shared.projitems" Label="Shared" />
+  <Import Project="..\Shared\IntoTheDungeon\IntoTheDungeon.projitems" Label="Shared" />
 </Project>

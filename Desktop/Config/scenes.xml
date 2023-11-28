@@ -1,7 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<scenesx xmlns="http://testgame.com">
+<scenes xmlns="http://testgame.com">
   <scene name="Main Menu">
-    <script>IntoTheDungeon.Scenes.MainMenuScene</script>
-    <ui_object type="imageButton" name="testButton" src="GUI_TestButtons/RedButton-Active"></ui_object>
+    <script>IntoTheDungeon.Scenes.MenuSceneScript</script>
+    <script>IntoTheDungeon.Scenes.TestButtonScript</script>
+    <ui_object type="textButton" name="testSceneButton" font="Fonts/Roman" text="Testing" x="100" y="700" bgColor="Blue"></ui_object>
+    <ui_object type="textButton" name="gameSceneButton" font="Fonts/Roman" text="Start Game" x="200" y="300" bgColor="0C356A"></ui_object>
+    <ui_object type="textButton" name="settingsButton" font="Fonts/Roman" text="Settings" x="200" y="370" bgColor="0C356A"></ui_object>
+    <ui_object type="textButton" name="quitButton" font="Fonts/Roman" text="Quit" x="200" y="440" bgColor="0C356A"></ui_object>
   </scene>
-</scenesx>
+  <scene name="Loading Scene">
+    <script>IntoTheDungeon.Scenes.LoadingScript1</script>
+    <ui_object type="textLabel" name="loadingText" font="Fonts/Roman" text="Please wait! The game is loading" x="600" y="400"></ui_object>
+  </scene>
+  <scene name="Game Scene">
+    <script>IntoTheDungeon.Scenes.GameSceneScript</script>
+    <script>IntoTheDungeon.Scenes.MainGameScript</script>
+    <ui_object type="textArea" name="logArea" x="50" y="30" width="120" height="680" font="Fonts/Roman"></ui_object>
+    <ui_object type="imageButton" name="backButton" src="GUI_TestButtons/RedButton-Active" x="850" y="100" scale="0.02"></ui_object>
+    <ui_object type="textButton" name="testButton" font="Fonts/Cambria" text="Check" x="850" y="250"></ui_object>
+  </scene>
+  <scene name="Test Scene">
+    <script>IntoTheDungeon.Scenes.TestSceneScript</script>
+    <ui_object type="imageButton" name="testButton" src="GUI_TestButtons/RedButton-Active" x="50" y="100"></ui_object>
+    <ui_object type="imageButton" name="otherButton" src="GUI_TestButtons/GreenButton-Active" x="450" y="100"></ui_object>
+    <ui_object type="textArea" name="myTextArea" x="700" y="250" width="100" height="200" font="Fonts/Roman">
+      <line color="White">This is a very looooooong example</line>
+      <line color="Blue">Oh my god! Another example!</line>
+    </ui_object>
+  </scene>
+</scenes>

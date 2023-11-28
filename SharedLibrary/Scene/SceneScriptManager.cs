@@ -15,16 +15,25 @@ namespace SharedLibrary.Scene
             this.scene = scene;
         }
 
+        public void Load()
+        {
+            foreach (var script in scripts.OrderBy(s => s.LoadOrder)) { 
+                script.Load();
+            }
+        }
+
         public void Update(GameTime gameTime)
         {
-            foreach (SceneScript script in scripts.OrderBy(o => o.UpdateOrder)) { 
+            foreach (SceneScript script in scripts.OrderBy(s => s.UpdateOrder)) { 
                 script.Update(gameTime);
+                if (!scene.GetSceneManager().ContinueUpdate)
+                    return;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (SceneScript script in scripts.OrderBy(o => o.DrawOrder))
+            foreach (SceneScript script in scripts.OrderBy(s => s.DrawOrder))
             {
                 script.Draw(spriteBatch);
             }
@@ -45,6 +54,10 @@ namespace SharedLibrary.Scene
 
         public void Clear()
         {
+            foreach (SceneScript script in scripts)
+            {
+                script.Destroy();
+            }
             scripts.Clear();
         }
 

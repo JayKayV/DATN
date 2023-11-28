@@ -186,6 +186,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "MonoGame.Extended.Tiled": {
+              "target": "Package",
+              "version": "[3.8.0, )"
+            },
             "MonoGame.Framework.DesktopGL": {
               "suppressParent": "All",
               "target": "Package",

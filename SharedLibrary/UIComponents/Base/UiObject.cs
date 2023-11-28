@@ -62,5 +62,50 @@ namespace SharedLibrary.UIComponents.Base
                     clickedStyle.Position = value;
             }
         }
+
+        public override float Scale
+        {
+            get => _scale;
+            set
+            {
+                base.Scale = value;
+                if (originalStyle != null)
+                    originalStyle.Scale = value;
+                if (hoverStyle != null)
+                    hoverStyle.Scale = value;
+                if (clickedStyle != null)
+                    clickedStyle.Scale= value;
+            }
+        }
+
+        public override float Rotation 
+        {
+            get => _rotation;
+            set
+            {
+                _rotation = value;
+                if (originalStyle != null)
+                    originalStyle.Rotation = value;
+                if (hoverStyle != null)
+                    hoverStyle.Rotation = value;
+                if (clickedStyle != null)
+                    clickedStyle.Rotation = value;
+            }
+        }
+
+        public override Color ColorMask 
+        { 
+            get => base.ColorMask; 
+            set
+            {
+                colorMask = value;
+                if (originalStyle != null)
+                    originalStyle.ColorMask = value;
+                if (hoverStyle != null)
+                    hoverStyle.ColorMask = value;
+                if (clickedStyle != null)
+                    clickedStyle.ColorMask = value;
+            }
+        }
     }
 }

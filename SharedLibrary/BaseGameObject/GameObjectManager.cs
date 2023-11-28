@@ -40,7 +40,7 @@ namespace SharedLibrary.BaseGameObject
         {
             GameObject? obj = gameObjects.Find(go => go.Name == name);
             if (obj == null)
-                throw new ArgumentException("Object name doesn\'t exist");
+                throw new ArgumentException($"Object name: {name} doesn\'t exist");
             return obj;
         }
 
@@ -82,6 +82,8 @@ namespace SharedLibrary.BaseGameObject
         //Create
         public void AddGameObject(GameObject gameObject)
         {
+            if (gameObject == null)
+                return;
             string objName = gameObject.Name;
             if (Exists(objName))
                 Debug.WriteLine(String.Format("[Warning]: {0} already exists", objName));

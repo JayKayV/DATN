@@ -76,7 +76,7 @@ namespace SharedLibrary.UIComponents
         public override void Draw(SpriteBatch batch)
         {
             if (this._visible) 
-                batch.Draw(this._image, _rect, null, Color.White);
+                batch.Draw(this._image, _rect.Location.ToVector2(), null, colorMask, _rotation, new Vector2(0, 0), _scale, SpriteEffects.None, 0f);
         }
 
         public override void Update(GameTime gameTime)

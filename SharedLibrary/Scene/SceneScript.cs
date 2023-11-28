@@ -9,11 +9,10 @@ namespace SharedLibrary.Scene
     {
         protected Scene scene;
         protected int loadMode;
-        protected int updateOrder;
-        protected int drawOrder;
 
-        public int UpdateOrder { get; }
-        public int DrawOrder { get; }
+        public int UpdateOrder { get; set;  }
+        public int DrawOrder { get; set; }
+        public int LoadOrder { get; set; }
         public SceneScript() { }
 
         public void Init(Scene scene) { 
@@ -46,14 +45,32 @@ namespace SharedLibrary.Scene
 
         protected GameObjectManager GameObjectManager { get => scene.GetObjectManager(); }
 
-        private void ChangeScene(string name)
+        protected void LoadScene(string name)
         {
             this.scene.GetSceneManager().LoadSceneByName(name);
         }
 
         public void AddScript(SceneScript script)
         {
+            this.scene.AddScript(script);
+        }
 
+        /// <summary>
+        ///  <para>Add object to objectManager, let other objects from same scene use; and for auto draw, update </para>
+        /// </summary>
+        /// <param name="gameObject">The gameObject need to be added, must be derived from GameObject class</param>
+        protected void Register(GameObject gameObject)
+        {
+            this.scene.GetObjectManager().AddGameObject(gameObject);
+        }
+
+        protected void Unregister(GameObject gameObject)
+        {
+            this.Scene.GetObjectManager().RemoveGameObject(gameObject);
+        }
+
+        protected GObjectStorage ObjectStorage {
+            get => this.scene.GetSceneManager().ObjectStorage;
         }
     }
 }

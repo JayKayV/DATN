@@ -11,7 +11,12 @@ namespace SharedLibrary.UIComponents.Base
     public abstract class AbstractUiObject : GameObject, IUiObject
     {
         protected Rectangle _rect;
+        protected Rectangle? _bound;
         protected Animator animator;
+
+        protected float _scale = 1f;
+        protected float _rotation = 0f;
+        protected Color colorMask = Color.White;
 
         public AbstractUiObject()
         {
@@ -42,6 +47,10 @@ namespace SharedLibrary.UIComponents.Base
         }
 
         //public abstract void Update();
+        public Rectangle GetRectangle()
+        {
+            return _rect;
+        }
 
         public virtual Point Position
         {
@@ -55,6 +64,32 @@ namespace SharedLibrary.UIComponents.Base
             set => _rect.Size = value;
         }
 
+        public virtual float Scale
+        {
+            get => _scale;
+            set
+            {
+                _scale = value;
+                _rect.Height = (int)(_rect.Height * _scale);
+                _rect.Width = (int)(_rect.Width * _scale);
+            }
+        }
+
+        /// <summary>
+        ///     Rotation works clockwise
+        /// </summary>
+        public virtual float Rotation
+        {
+            get => _rotation;
+            set => _rotation = value;
+        }
+
+        public virtual Color ColorMask
+        {
+            get => colorMask;
+            set => colorMask = value;
+        }
+
         public virtual object Clone()
         {
             return this.MemberwiseClone();
@@ -63,6 +98,12 @@ namespace SharedLibrary.UIComponents.Base
         public Animator GetAnimator()
         {
             return animator;
+        }
+
+        public Rectangle? Bound
+        {
+            get => _bound;
+            set => _bound = value;
         }
     }
 }

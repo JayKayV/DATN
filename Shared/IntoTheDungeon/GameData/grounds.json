@@ -1,0 +1,121 @@
+﻿[
+  {
+    "tileId": 0,
+    "name": "Default",
+    "walkable": true,
+    "seethrough": true,
+    "effects": []
+  },
+  {
+    "tileId": 824,
+    "name": "Tree0",
+    "walkable": false,
+    "seethrough": false,
+    "effects": []
+  },
+  {
+    "tileId": 825,
+    "name": "Tree1",
+    "walkable": false,
+    "seethrough": false,
+    "effects": []
+  },
+  {
+    "tileId": 826,
+    "name": "Tree2",
+    "walkable": false,
+    "seethrough": false,
+    "effects": []
+  },
+  {
+    "tileId": 827,
+    "name": "Tree3",
+    "walkable": false,
+    "seethrough": false,
+    "effects": []
+  },
+  {
+    "tileId": 828,
+    "name": "Tree4",
+    "walkable": false,
+    "seethrough": false,
+    "effects": []
+  },
+  {
+    "tileId": 829,
+    "name": "Tree5",
+    "walkable": false,
+    "seethrough": true,
+    "effects": []
+  },
+  {
+    "tileId": 830,
+    "name": "Tree6",
+    "walkable": false,
+    "seethrough": true,
+    "effects": []
+  },
+  {
+    "tileId": 1236,
+    "name": "Water0",
+    "walkable": true,
+    "seethrough": true,
+    "effects": ["Wet"]
+  },
+  {
+    "tileId": 1237,
+    "name": "Water1",
+    "walkable": true,
+    "seethrough": true,
+    "effects": ["Wet"]
+  },
+  {
+    "tileId": 1238,
+    "name": "Water2",
+    "walkable": true,
+    "seethrough": true,
+    "effects": ["Wet"]
+  },
+  {
+    "tileId": 1239,
+    "name": "Water3",
+    "walkable": true,
+    "seethrough": true,
+    "effects": ["Wet"]
+  },
+  {
+    "tileId": 1240,
+    "name": "Water4",
+    "walkable": true,
+    "seethrough": true,
+    "effects": ["Wet"]
+  },
+  {
+    "tileId": 1241,
+    "name": "Water5",
+    "walkable": true,
+    "seethrough": true,
+    "effects": ["Wet"]
+  },
+  {
+    "tileId": 4126,
+    "name": "WoodenFence0",
+    "walkable": false,
+    "seethrough": true,
+    "effects": []
+  },
+  {
+    "tileId": 4127,
+    "name": "WoodenFence1",
+    "walkable": false,
+    "seethrough": true,
+    "effects": []
+  },
+  {
+    "tileId": 4128,
+    "name": "WoodenFence2",
+    "walkable": false,
+    "seethrough": true,
+    "effects": []
+  }
+]

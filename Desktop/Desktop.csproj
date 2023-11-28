@@ -19,6 +19,9 @@
     <EmbeddedResource Include="Icon.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <!--<PackageReference Include="Monogame.Extended" Version="3.8.0" />-->
+    <PackageReference Include="Monogame.Extended.Content.Pipeline" Version="3.8.0" />
+    <PackageReference Include="Monogame.Extended.Tiled" Version="3.8.0" />
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
 
@@ -28,5 +31,5 @@
     <Message Text="Restoring dotnet tools" Importance="High" />
     <Exec Command="dotnet tool restore" />
   </Target>
-  <Import Project="..\Shared\Shared\Shared.projitems" Label="Shared" />
+  <Import Project="..\Shared\IntoTheDungeon\IntoTheDungeon.projitems" Label="Shared" />
 </Project>

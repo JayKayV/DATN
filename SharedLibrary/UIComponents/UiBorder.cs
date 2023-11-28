@@ -8,20 +8,20 @@ namespace SharedLibrary.UIComponents
     public class UiBorder : AbstractUiObject
     {
         private Texture2D texture;
-        private Rectangle refRectangle;
+        private AbstractUiObject refObject;
 
         private int thickness;
 
-        public UiBorder(GraphicsDevice graphicsDevice, Rectangle rectangle) {
-            refRectangle = rectangle;
+        public UiBorder(GraphicsDevice graphicsDevice, AbstractUiObject _object) {
+            refObject = _object;
             texture = new Texture2D(graphicsDevice, 1, 1);
 
             texture.SetData(new Color[] { Color.Black });
             thickness = 0;
         }
 
-        public UiBorder(GraphicsDevice graphicsDevice, Rectangle rectangle, Color color, int thickness) {
-            refRectangle = rectangle;
+        public UiBorder(GraphicsDevice graphicsDevice, AbstractUiObject _object, Color color, int thickness) {
+            refObject = _object;
             texture = new Texture2D(graphicsDevice, 1, 1);
 
             texture.SetData(new Color[] { color });
@@ -37,32 +37,51 @@ namespace SharedLibrary.UIComponents
         ///     Draw lines clockwise from top->left
         /// </summary>
         /// <param name="spriteBatch"></param>
+        // t...
+        // r**l
+        // .**.
+        // b...
         public override void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle topLineRect = new Rectangle(refRectangle.Location, new Point(refRectangle.Width, thickness));
-            Rectangle rightLineRect = new Rectangle(
-                new Point(refRectangle.Right - thickness, refRectangle.Top + thickness), 
-                new Point(thickness, refRectangle.Height - thickness));
-            Rectangle bottomLineRect = new Rectangle(
-                    new Point(refRectangle.X, refRectangle.Bottom - thickness),
-                    new Point(refRectangle.Width, thickness)
-                );
-            Rectangle leftLineRect = new Rectangle(
-                    new Point(refRectangle.X, refRectangle.Top + thickness),
-                    new Point(thickness, refRectangle.Height - thickness)
-                );
+            Rectangle refRectangle = refObject.GetRectangle();
+            float r = refObject.Rotation;
 
-            spriteBatch.Draw(texture, topLineRect, Color.White);
-            spriteBatch.Draw(texture, rightLineRect, Color.White);
-            spriteBatch.Draw(texture, bottomLineRect, Color.White);
-            spriteBatch.Draw(texture, leftLineRect, Color.White);
+            double t1 = thickness * Math.Sqrt(2);
+            double t2 = Math.Sqrt(thickness * thickness + refRectangle.Height * refRectangle.Height);
+            const double theta1 = 5 * Math.PI / 4;
+            double theta2 = Math.Acos((-thickness) / t2);
+            
+            Vector2 topPosition = new Vector2(
+                (float)(refRectangle.X + t1 * Math.Cos(r + theta1)),
+                (float)(refRectangle.Y + t1 * Math.Sin(r + theta1))
+            );
+            Vector2 rightSidePosition = new Vector2(
+                (float)(refRectangle.X + refRectangle.Width * Math.Cos(r)),
+                (float)(refRectangle.Y + refRectangle.Width * Math.Sin(r))
+            );
+            Vector2 bottomPosition = new Vector2(
+                (float)(refRectangle.X + t2 * Math.Cos(r + theta2)), 
+                (float)(refRectangle.Y + t2 * Math.Sin(r + theta2))
+            );
+            Vector2 leftSidePosition = new Vector2(
+                (float)(refRectangle.X - thickness * Math.Cos(r)), 
+                (float)(refRectangle.Y - thickness * Math.Sin(r))
+            );
+
+            Vector2 widthBorderScale = new Vector2(refRectangle.Width + thickness * 2, thickness);
+            Vector2 heightBorderScale = new Vector2(thickness, refRectangle.Height);
+
+            spriteBatch.Draw(texture, topPosition, null, Color.White, refObject.Rotation, new Vector2(0, 0), widthBorderScale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, rightSidePosition, null, Color.White, refObject.Rotation, new Vector2(0, 0), heightBorderScale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, bottomPosition, null, Color.White, refObject.Rotation, new Vector2(0, 0), widthBorderScale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, leftSidePosition, null, Color.White, refObject.Rotation, new Vector2(0, 0), heightBorderScale, SpriteEffects.None, 0f);
         }
 
-        public UiBorder Clone()
+        public UiBorder Clone(AbstractUiObject cloneObject)
         {
             UiBorder clone = this.MemberwiseClone() as UiBorder;
 
-            clone.texture = new Texture2D(this.texture.GraphicsDevice, refRectangle.Width, refRectangle.Height);
+            clone.texture = new Texture2D(this.texture.GraphicsDevice, 1, 1);
             clone.Color = this.Color;
             return clone;
         }
@@ -90,9 +109,9 @@ namespace SharedLibrary.UIComponents
             }
         }
 
-        public void SetRefRect(Rectangle rect)
+        public void SetRefObject(AbstractUiObject _object)
         {
-            this.refRectangle = rect;
+            this.refObject = _object;
         }
     }
 }

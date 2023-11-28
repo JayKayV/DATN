@@ -9,6 +9,7 @@ using SharedLibrary.Input;
 using Microsoft.Xna.Framework.Content;
 using SharedLibrary.Ultility;
 using System.Xml;
+using System.Diagnostics;
 
 namespace SharedLibrary.UIComponents
 {
@@ -106,8 +107,12 @@ namespace SharedLibrary.UIComponents
         //Draw and update
         public override void Draw(SpriteBatch batch)
         {
-            if (this._visible) 
-                batch.DrawString(_font, _text, _rect.Location.ToVector2(), color);
+            if (this._visible)
+            {
+                batch.DrawString(_font, _text, _rect.Location.ToVector2(), Color, _rotation, new Vector2(0, 0), _scale, SpriteEffects.None, 0f);
+                /*if (_text == "Start Game")
+                    Debug.WriteLine(_rect.Location.ToVector2());*/
+            }
         }
 
         public override void Update(GameTime gameTime)
@@ -166,6 +171,7 @@ namespace SharedLibrary.UIComponents
             string name = XMLHelper.GetAttribute(attributeCollection, "name", "textLabel", false);
             string font = XMLHelper.GetAttribute(attributeCollection, "font");
             string text = XMLHelper.GetAttribute(attributeCollection, "text", node.InnerText, false);
+            string color = XMLHelper.GetAttribute(attributeCollection, "color", "FFFFFF", false);
 
             int x = int.Parse(XMLHelper.GetAttribute(attributeCollection, "x", "0", false));
             int y = int.Parse(XMLHelper.GetAttribute(attributeCollection, "y", "0", false));

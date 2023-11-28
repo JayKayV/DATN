@@ -56,3 +56,16 @@ E:\New\MonoGames\IntoTheDungeon\Desktop\bin\Debug\net6.0\Content\GUI_TestButtons
 E:\New\MonoGames\IntoTheDungeon\Desktop\bin\Debug\net6.0\Content\GUI_TestButtons\RedButton-Hover.xnb
 E:\New\MonoGames\IntoTheDungeon\Desktop\bin\Debug\net6.0\Content\GUI_TestButtons\YellowButton-Active.xnb
 E:\New\MonoGames\IntoTheDungeon\Desktop\bin\Debug\net6.0\Content\GUI_TestButtons\YellowButton-Hover.xnb
+E:\New\MonoGames\IntoTheDungeon\Desktop\bin\Debug\net6.0\Content\Fonts\Roman.xnb
+E:\New\MonoGames\IntoTheDungeon\Desktop\bin\Debug\net6.0\Content\Stages\Test\TestMap0.xnb
+E:\New\MonoGames\IntoTheDungeon\Desktop\bin\Debug\net6.0\Content\TileSet\urizen_tileset.xnb
+E:\New\MonoGames\IntoTheDungeon\Desktop\bin\Debug\net6.0\Autofac.dll
+E:\New\MonoGames\IntoTheDungeon\Desktop\bin\Debug\net6.0\MonoGame.Extended.dll
+E:\New\MonoGames\IntoTheDungeon\Desktop\bin\Debug\net6.0\MonoGame.Extended.Graphics.dll
+E:\New\MonoGames\IntoTheDungeon\Desktop\bin\Debug\net6.0\MonoGame.Extended.Tiled.dll
+E:\New\MonoGames\IntoTheDungeon\Desktop\bin\Debug\net6.0\Newtonsoft.Json.dll
+E:\New\MonoGames\IntoTheDungeon\Desktop\bin\Debug\net6.0\gamedata\units.json
+E:\New\MonoGames\IntoTheDungeon\Desktop\bin\Debug\net6.0\Desktop.dll.config
+E:\New\MonoGames\IntoTheDungeon\Desktop\bin\Debug\net6.0\Content\Fonts\Cambria.xnb
+E:\New\MonoGames\IntoTheDungeon\Desktop\bin\Debug\net6.0\GameData\grounds.json
+E:\New\MonoGames\IntoTheDungeon\Desktop\bin\Debug\net6.0\GameData\items.json

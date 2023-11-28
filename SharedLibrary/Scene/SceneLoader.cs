@@ -18,19 +18,19 @@ namespace SharedLibrary.Scene
             return xmlDocument;
         }
 
-        private static SceneScript? LoadScriptFromAssembly(string name)
+        public static SceneScript? LoadScript(string name)
         {
-            Assembly assembly = Assembly.LoadFrom(Assembly.GetExecutingAssembly().Location);
+            Assembly assembly = Assembly.LoadFrom(Assembly.GetEntryAssembly().GetName().Name);
 
             if (assembly == null)
-                throw new ArgumentNullException("Error loading assembly...");
+                throw new ArgumentNullException($"Error loading assembly!");
 
             Type ex = assembly.GetType(name);
 
             if (ex == null)
-                throw new ArgumentNullException(String.Format("Class {0} doesn\'t exists!", name));
+                throw new ArgumentNullException(string.Format("Class {0} doesn\'t exists!", name));
             if (!ex.IsAssignableTo(typeof(SceneScript)))
-                throw new ArgumentException(String.Format("Class {0} must be extended from ScriptScene class!", name));
+                throw new ArgumentException(String.Format("Class {0} must be extended from SceneScript class!", name));
 
             return Activator.CreateInstance(ex) as SceneScript;
         }

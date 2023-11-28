@@ -10,16 +10,57 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Gameplay\Actions\ActionExecutioner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Gameplay\Actions\AttackActions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Gameplay\Actions\BlockActions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Gameplay\Actions\GameAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)gameplay\effects\ItemEffects.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)gameplay\effects\StatusEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)gameplay\effects\TileEffects.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)gameplay\effects\UnitEffects.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Gameplay\GameDataLoader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Gameplay\Grounds\GroundData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Gameplay\Intents\Intent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Gameplay\Items\ItemData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)gameplay\items\Shield.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Gameplay\TileRenderer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)gameplay\Campaign.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)gameplay\CampaignMaster.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)gameplay\items\BaseItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)gameplay\Level.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)gameplay\Stage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)gameplay\LevelTable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)gameplay\Tile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)gameplay\TileStatus.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)gameplay\units\BaseUnit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Gameplay\Units\Enemies\Orc.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)gameplay\units\UnitData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Gameplay\Units\UnitManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)scenes\Example.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)scenes\MainMenuScene.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)scenes\GameSceneScript.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)scenes\LogWriter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)scenes\MainGameScript.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)scenes\MenuSceneScript.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)scenes\TestButtonScript.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)scenes\TestScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Content\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Gameplay\Effects\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Gameplay\Units\Neutral\" />
     <Folder Include="$(MSBuildThisFileDirectory)Scenes\" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
     <None Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+    <None Include="$(MSBuildThisFileDirectory)gameplay\LevelLogger.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)GameData\grounds.json" />
+    <Content Include="$(MSBuildThisFileDirectory)GameData\items.json" />
+    <Content Include="$(MSBuildThisFileDirectory)gamedata\units.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>

@@ -12,15 +12,10 @@ namespace SharedLibrary.Ultility
     {
         public static Color GetColorFrom(string data)
         {
-            try
-            {
-                return GetColorFromName(data);
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine($"[INFO]: Will now try to convert \"{data}\" by hex");
-            }
-            return FromHex(data);
+            Color? color = GetColorFromName(data);
+            if (color == null)
+                return FromHex(data);
+            return color.GetValueOrDefault(Color.Transparent);
         }
 
         private static readonly Dictionary<string, Color> _colorsByName = typeof(Color)
@@ -28,14 +23,14 @@ namespace SharedLibrary.Ultility
             .Where(p => p.PropertyType == typeof(Color))
             .ToDictionary(p => p.Name, p => (Color)p.GetValue(null), StringComparer.OrdinalIgnoreCase);
 
-        public static Color GetColorFromName(string name)
+        public static Color? GetColorFromName(string name)
         {
             Color color;
 
             if (_colorsByName.TryGetValue(name, out color))
                 return color;
 
-            throw new InvalidOperationException($"{name} is not a valid color");
+            return null;
         }
 
         public static Color FromHex(string data)

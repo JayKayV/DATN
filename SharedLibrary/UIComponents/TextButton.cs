@@ -15,9 +15,6 @@ namespace SharedLibrary.UIComponents
 {
     public class TextButton : AbstractButton<TextLabel, TextButton>, IClickable, IHoverable
     {
-        public event EventHandler<OnClickArgs>? OnClick;
-
-        public event EventHandler? OnHover;
 
         public TextButton(GraphicsDevice graphicsDevice, TextLabel label, Point location, Color bgColor) : base(graphicsDevice, label, location, bgColor)
         { }
@@ -26,46 +23,6 @@ namespace SharedLibrary.UIComponents
             : base(graphicsDevice, label, location, bgColor, paddings)
         { }
 
-        public override void Update(GameTime gameTime)
-        {
-            Point mousePosition = MouseHandler.GetPosition();
-            if (this._rect.Contains(mousePosition))
-            {
-                if (MouseHandler.Instance.HasClicked(MouseButton.LEFT_BUTTON))
-                {
-                    MouseState mouseState = MouseHandler.GetState();
-
-                    if (this._rect.Contains(mousePosition))
-                    {
-                        RaiseOnClickEvent(mouseState);
-                    }
-                }
-                else
-                    RaiseOnHoverEvent();
-            }
-            else
-            {
-                ApplyStyle(originalStyle);
-            }
-        }
-
-        protected void RaiseOnClickEvent(MouseState mouseState)
-        {
-            ApplyStyle(clickedStyle);
-            OnClick?.Invoke(this, new OnClickArgs(mouseState));
-        }
-
-        public void RaiseOnHoverEvent()
-        {
-            ApplyStyle(hoverStyle);
-            OnHover?.Invoke(this, EventArgs.Empty);
-        }
-
-        public void RaiseOnMouseLeaveEvent()
-        {
-            ApplyStyle(originalStyle);
-        }
-
         public string Text
         {
             get => _label.Text;
@@ -73,7 +30,7 @@ namespace SharedLibrary.UIComponents
                 _label.Text = value;
                 _rect.Width = _label.Size.X + paddings[1] + paddings[3] + BorderThickness * 2;
 
-                border.SetRefRect(_rect);
+                border.SetRefObject(this);
             }
         }
 
@@ -100,12 +57,14 @@ namespace SharedLibrary.UIComponents
             string font = XMLHelper.GetAttribute(attributeCollection, "font");
             string text = XMLHelper.GetAttribute(attributeCollection, "text", node.InnerText, false);
 
+            float scale = float.Parse(XMLHelper.GetAttribute(attributeCollection, "scale", "1", false));
             int x = int.Parse(XMLHelper.GetAttribute(attributeCollection, "x", "0", false));
             int y = int.Parse(XMLHelper.GetAttribute(attributeCollection, "y", "0", false));
 
             TextLabel _label = new TextLabel(contentManager.Load<SpriteFont>(font), text, new Point(0, 0));
             TextButton _button = new TextButton(graphicsDevice, _label, new Point(x, y), ColorHelper.GetColorFrom(bgColor));
             _button.Name = name;
+            _button.Scale = scale;
             return _button;
         }
     } 

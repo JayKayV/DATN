@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using SharedLibrary.BaseGameObject;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,14 +24,19 @@ namespace SharedLibrary.Scene
         private GameWindow gameWindow;
         private ContentManager contentManager;
         private GraphicsDevice graphicsDevice;
+        private GObjectStorage objectStorage;
 
         private XmlElement scenesNode;
+
+        public bool ContinueUpdate { get; set; } = true;
+        public bool Quit { get; set; } = false;
 
         public SceneManager(GameWindow gameWindow, ContentManager contentManager, GraphicsDevice graphicsDevice) 
         {
             this.gameWindow = gameWindow;
             this.contentManager = contentManager;
             this.graphicsDevice = graphicsDevice;
+            this.objectStorage = new GObjectStorage();
         }
 
         public void Init()
@@ -90,6 +96,8 @@ namespace SharedLibrary.Scene
                 currentScene.Destroy();
                 currentScene = nextScene;
 
+                ContinueUpdate = false;
+                Load();
                 OnSceneLoaded?.Invoke(this, new OnSceneLoadedArgs(currentScene.Name));
             }
             else
@@ -110,6 +118,8 @@ namespace SharedLibrary.Scene
 
         public void Update(GameTime gameTime)
         {
+            if (!ContinueUpdate) 
+                ContinueUpdate = true;
             if (currentScene != null) 
                 currentScene.Update(gameTime);
         }
@@ -122,6 +132,18 @@ namespace SharedLibrary.Scene
                 currentScene.Draw(spriteBatch);
 
             spriteBatch.End();
+        }
+        public ContentManager ContentManager { get => contentManager; }
+        public GraphicsDevice GraphicsDevice { get => graphicsDevice; }
+        public GObjectStorage ObjectStorage { get => objectStorage; }
+
+        public void QuitGame()
+        {
+            Quit = true;
+            ContinueUpdate = false;
+
+            scenes.Clear();
+            objectStorage.Clear();
         }
     }
 }

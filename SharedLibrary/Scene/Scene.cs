@@ -8,6 +8,7 @@ using SharedLibrary.UIComponents.Base;
 using SharedLibrary.UIComponents;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 
 namespace SharedLibrary.Scene
 {
@@ -52,6 +53,15 @@ namespace SharedLibrary.Scene
                     case "imageLabel":
                         uiObject = ImageLabel.LoadFromXml(node, contentManager, graphicsDevice);
                         break;
+                    case "textButton":
+                        uiObject = TextButton.LoadFromXml(node, contentManager, graphicsDevice); 
+                        break;
+                    case "textLabel":
+                        uiObject = TextLabel.LoadFromXml(node, contentManager);
+                        break;
+                    case "textArea":
+                        uiObject = TextArea.LoadFromXml(node, contentManager, graphicsDevice);
+                        break;
                     default:
                         Debug.WriteLine($"[WARNING]: Incorrect type or bad element while parsing node index {index}");
                         break;
@@ -63,21 +73,34 @@ namespace SharedLibrary.Scene
         public void LoadScripts(XmlNodeList nodes, ContentManager contentManager, GraphicsDevice graphicsDevice)
         {
             //scriptsManager.
-            Debug.WriteLine("check..." + gameObjectManager.GetGameObjects().Count());
+            //Debug.WriteLine("check..." + gameObjectManager.GetGameObjects().Count());
+            int index = 0;
+            foreach (XmlNode node in nodes)
+            {
+                index += 1;
+                SceneScript? script = SceneLoader.LoadScript(node.InnerText);
+                if (script == null)
+                    Debug.WriteLine($"[WARNING]: Unable to parse script while parsing script index {index}, please check your path");
+                else 
+                    scriptsManager.AddScript(script);
+            }
+            scriptsManager.Load();
         }
         public void Update(GameTime gameTime)
         {
-            foreach (var uiObject in gameObjectManager.GetGameObjects().OfType<AbstractUiObject>())
+            foreach (var gObject in gameObjectManager.GetGameObjects())
             {
-                uiObject.Update(gameTime);
+                gObject.Update(gameTime);
+                if (!sceneManager.ContinueUpdate)
+                    return;
             }
             scriptsManager.Update(gameTime);
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var uiObject in gameObjectManager.GetGameObjects().OfType<AbstractUiObject>())
+            foreach (var gObject in gameObjectManager.GetGameObjects())
             {
-                uiObject.Draw(spriteBatch);
+                gObject.Draw(spriteBatch);
             }
             scriptsManager.Draw(spriteBatch);
         }
@@ -106,9 +129,25 @@ namespace SharedLibrary.Scene
             return gameObjectManager;
         }
 
+        public ContentManager GetContentManger()
+        {
+            return sceneManager.ContentManager;
+        }
+
+        public GraphicsDevice GetGraphicsDevice()
+        {
+            return sceneManager.GraphicsDevice;
+        }
+
         public void AddScript(SceneScript script)
         {
             scriptsManager.AddScript(script);
+        }
+
+        public void QuitGame()
+        {
+            this.Destroy();
+            sceneManager.QuitGame();
         }
     }
 }

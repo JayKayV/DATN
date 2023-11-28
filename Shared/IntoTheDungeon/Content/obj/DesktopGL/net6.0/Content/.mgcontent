@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>E:/New/MonoGames/IntoTheDungeon/Shared/IntoTheDungeon/Content/Fonts/Cambria.spritefont</File>
+    <File>E:/New/MonoGames/IntoTheDungeon/Shared/IntoTheDungeon/Content/Fonts/Roman.spritefont</File>
+    <File>E:/New/MonoGames/IntoTheDungeon/Shared/IntoTheDungeon/Content/GUI_TestButtons/GreenButton-Active.png</File>
+    <File>E:/New/MonoGames/IntoTheDungeon/Shared/IntoTheDungeon/Content/GUI_TestButtons/GreenButton-Hover.png</File>
+    <File>E:/New/MonoGames/IntoTheDungeon/Shared/IntoTheDungeon/Content/GUI_TestButtons/RedButton-Active.png</File>
+    <File>E:/New/MonoGames/IntoTheDungeon/Shared/IntoTheDungeon/Content/GUI_TestButtons/RedButton-Hover.png</File>
+    <File>E:/New/MonoGames/IntoTheDungeon/Shared/IntoTheDungeon/Content/GUI_TestButtons/YellowButton-Active.png</File>
+    <File>E:/New/MonoGames/IntoTheDungeon/Shared/IntoTheDungeon/Content/GUI_TestButtons/YellowButton-Hover.png</File>
+    <File>E:/New/MonoGames/IntoTheDungeon/Shared/IntoTheDungeon/Content/Stages/Test/TestMap0.json</File>
+    <File>E:/New/MonoGames/IntoTheDungeon/Shared/IntoTheDungeon/Content/TileSet/urizen_onebit_tileset__v1d0.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File>TileSet/urizen_tileset.png</File>
+  </DestFiles>
+</SourceFileCollection>

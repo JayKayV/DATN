@@ -14,8 +14,20 @@ namespace SharedLibrary.Scene
         {
             Debug.WriteLine(Environment.CurrentDirectory);
             string path = Path.Combine(Environment.CurrentDirectory, @"..\..\..\Config\scenes.xml");
+            return LoadAll(path);
+        }
+
+        public static XmlDocument LoadAll(string path)
+        {
             XmlDocument xmlDocument = XMLHelper.LoadScene(path);
             return xmlDocument;
+        }
+
+        public static XmlDocument LoadAllFromEntry()
+        {
+            Debug.WriteLine(Assembly.GetEntryAssembly().Location);
+            string path = Path.Combine(Assembly.GetEntryAssembly().Location, @"..\Config\scenes.xml");
+            return LoadAll(path);
         }
 
         public static SceneScript? LoadScript(string name)

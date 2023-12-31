@@ -1,3 +1,32 @@
-﻿{
-
-}
+﻿[
+  {
+    "TileId": 2704,
+    "Name": "long sword",
+    "Affect": "attack",
+    "Value": 1
+  },
+  {
+    "TileId": 2169,
+    "Name": "berry",
+    "Affect": "health",
+    "Value": 1
+  },
+  {
+    "TileId": 2887,
+    "Name": "armor",
+    "Affect": "armor",
+    "Value": 1
+  },
+  {
+    "TileId": 2371,
+    "Name": "healing bottle",
+    "Affect": "health",
+    "Value": 2
+  },
+  {
+    "TileId": 1,
+    "Name": "randomizer",
+    "Affect": "none",
+    "Value": 0
+  }
+]

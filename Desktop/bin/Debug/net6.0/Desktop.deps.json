@@ -11,7 +11,6 @@
           "MonoGame.Content.Builder.Task": "3.8.1.303",
           "MonoGame.Framework.DesktopGL": "3.8.1.303",
           "MonoGame.Extended.Content.Pipeline": "3.8.0",
-          "MonoGame.Extended.Tiled": "3.8.0",
           "SharedLibrary": "1.0.0"
         },
         "runtime": {
@@ -129,7 +128,7 @@
       },
       "SharedLibrary/1.0.0": {
         "dependencies": {
-          "MonoGame.Extended.Tiled": "3.8.0"
+          "MonoGame.Extended.Content.Pipeline": "3.8.0"
         },
         "runtime": {
           "SharedLibrary.dll": {}

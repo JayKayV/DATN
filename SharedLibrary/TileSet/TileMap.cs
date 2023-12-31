@@ -22,6 +22,11 @@ namespace SharedLibrary.TileSet
             Depth = tiledLayer.GetProperty<float>("Order");
         }
 
+        public int GetIdRc(int r, int c)
+        {
+            return data[r * Size.X + c];
+        }
+
         public int GetId(int x, int y)
         {
             return data[y * Size.X + x];
@@ -66,13 +71,13 @@ namespace SharedLibrary.TileSet
         /// <returns></returns>
         public int[][] GetData(int x, int y, int w, int h)
         {
-            if (x + w > Size.X || y + h > Size.Y)
+            if (y + w > Size.X || x + h > Size.Y)
                 throw new ArgumentOutOfRangeException("Submap out of bound!");
 
             int[][] result = new int[h][];
             for (int i = 0; i < h; i++)
             {
-                result[i] = new ArraySegment<int>(data, (x + i) * Size.X + y, w).Array;
+                result[i] = new ArraySegment<int>(data, (x + i) * Size.X + y, w).ToArray();
             }
             return result;
         }
@@ -208,13 +213,21 @@ namespace SharedLibrary.TileSet
         {
             foreach (TileMapLayer layer in layers)
             {
-
+                layer.SwapValue(x1, y1, x2, y2);
             }
         }
 
         public void AssignTile(int x, int y, int value)
         {
+            foreach (TileMapLayer layer in layers)
+            {
+                layer.AssignValue(x, y, value);
+            }
+        }
 
+        public bool WithinBound(int r, int c)
+        {
+            return r >= 0 && c >= 0 && r < this.mapSize.Y && c < this.mapSize.X;
         }
     }
 }

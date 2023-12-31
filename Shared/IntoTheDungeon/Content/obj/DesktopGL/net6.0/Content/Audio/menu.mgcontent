@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>C:/Users/PC/source/repos/DATN/Shared/IntoTheDungeon/Content/Audio/menu.mp3</SourceFile>
+  <SourceTime>2023-12-25T19:33:29.2002609-08:00</SourceTime>
+  <DestFile>C:/Users/PC/source/repos/DATN/Shared/IntoTheDungeon/Content/bin/DesktopGL/Content/Audio/menu.xnb</DestFile>
+  <DestTime>2023-12-25T19:39:22.2202234-08:00</DestTime>
+  <Importer>Mp3Importer</Importer>
+  <ImporterTime>2022-07-26T04:44:56-07:00</ImporterTime>
+  <Processor>SongProcessor</Processor>
+  <ProcessorTime>2022-07-26T04:44:56-07:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput>
+    <string>C:/Users/PC/source/repos/DATN/Shared/IntoTheDungeon/Content/bin/DesktopGL/Content/Audio/menu.ogg</string>
+  </BuildOutput>
+</PipelineBuildEvent>

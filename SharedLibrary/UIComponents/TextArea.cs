@@ -105,7 +105,7 @@ namespace SharedLibrary.UIComponents
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(renderTexture, Position.ToVector2(), null, Color.White, Rotation, new Vector2(0, 0), Scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(renderTexture, Position.ToVector2(), null, Color.White, Rotation, new Vector2(0, 0), Scale, SpriteEffects.None, _layerDepth);
         }
 
         public override void Update(GameTime gameTime)
@@ -151,9 +151,9 @@ namespace SharedLibrary.UIComponents
 
             if (index < 0) {
                 if (NumberOfLines > 0)
-                    regionHints.Add(new Point(regionHints.Last().X + regionHints.Last().Y + LineSpacing, CalculateHeight(font, line)));
+                    regionHints.Add(new Point(regionHints.Last().X + regionHints.Last().Y + LineSpacing, CalculateHeight(_font, line)));
                 else
-                    regionHints.Add(new Point(0, CalculateHeight(font, line)));
+                    regionHints.Add(new Point(0, CalculateHeight(_font, line)));
                 lines.Add(line);
                 colors.Add(_color);
                 fonts.Add(_font);
@@ -170,11 +170,13 @@ namespace SharedLibrary.UIComponents
             lines.RemoveAt(index);
             colors.RemoveAt(index);
             fonts.RemoveAt(index);
+
+            UpdateRenderTexture();
         }
         public int NumberOfLines { get => lines.Count; }
         //----------------------------------------------------------
 
-        private void UpdateRenderTexture()
+        public void UpdateRenderTexture()
         {
             graphicsDevice.SetRenderTarget(renderTarget);
             SpriteBatch batch = new SpriteBatch(graphicsDevice);
@@ -202,7 +204,7 @@ namespace SharedLibrary.UIComponents
         {
             string[] words = text.Split(' ');
             int blankWidth = (int)font.MeasureString("" + ' ').X;
-            int tLength = 0, tHeight = 0;
+            int tLength = 0, tHeight = font.LineSpacing;
             foreach (string word in words)
             {
                 int wordLength = (int) font.MeasureString(word).X;
@@ -213,8 +215,16 @@ namespace SharedLibrary.UIComponents
                     tLength = 0;
                 } else if (tLength + wordLength + blankWidth >= Size.X)
                 {
-                    tHeight += font.LineSpacing * 2;
-                    tLength = 0;
+                    if (wordLength + blankWidth >= Size.X)
+                    {
+                        tHeight += font.LineSpacing * 2;
+                        tLength = 0;
+                    }
+                    else
+                    {
+                        tHeight += font.LineSpacing;
+                        tLength = wordLength + blankWidth;
+                    }
                 } else
                 {
                     tLength += wordLength + blankWidth;
@@ -242,8 +252,15 @@ namespace SharedLibrary.UIComponents
                     else if (tLength + wordLength + blankWidth >= Size.X)
                     {
                         batch.DrawString(font, word, new Vector2(0, tHeight + font.LineSpacing), color, Rotation, new Vector2(0, 0), Scale, SpriteEffects.None, 0f);
-                        tHeight += font.LineSpacing * 2;
-                        tLength = 0;
+                        if (wordLength + blankWidth >= Size.X)
+                        {
+                            tHeight += font.LineSpacing * 2;
+                            tLength = 0;
+                        } else
+                        {
+                            tHeight += font.LineSpacing;
+                            tLength = wordLength + blankWidth;
+                        }
                     } else
                     {
                         batch.DrawString(font, word, new Vector2(tLength, tHeight), color, Rotation, new Vector2(0, 0), Scale, SpriteEffects.None, 0f);
@@ -284,11 +301,13 @@ namespace SharedLibrary.UIComponents
 
             string mainFont = XMLHelper.GetAttribute(attributeCollection, "font", "", false);
             string mainColor = XMLHelper.GetAttribute(attributeCollection, "color", "FFFFFF", false);
+            float depth = float.Parse(XMLHelper.GetAttribute(attributeCollection, "depth", "0", false));
 
             TextArea _area = new TextArea(graphicsDevice, new Point(x, y), new Point(width, height));
             if (mainFont != "")
                 _area.MainFont = contentManager.Load<SpriteFont>(mainFont);
             _area.MainColor = ColorHelper.GetColorFrom(mainColor);
+            _area.LayerDepth = depth;
 
             if (node.ChildNodes.Count > 0)
             {

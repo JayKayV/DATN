@@ -5,6 +5,5 @@ namespace IntoTheDungeon.Gameplay
         private int seed;
 
         private LevelTable table;
-
     }
 }

@@ -1,0 +1,3 @@
+drawable\icon;drawable\Icon
+values\strings;values\Strings
+xml\microsoft_maui_essentials_fileprovider_file_paths;resources\xml\microsoft_maui_essentials_fileprovider_file_paths

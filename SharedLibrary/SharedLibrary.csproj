@@ -6,12 +6,14 @@
     <NoWarn>8618,8625</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="MonoGame.Extended.Tiled" Version="3.8.0" />
+    <Compile Remove="Audio\**" />
+    <EmbeddedResource Remove="Audio\**" />
+    <None Remove="Audio\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Extended.Content.Pipeline" Version="3.8.0" />
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Audio\" />
   </ItemGroup>
 </Project>

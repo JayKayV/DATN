@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "Autofac/5.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Autofac.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Autofac.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "coverlet.collector/3.1.2": {
         "type": "package",
         "build": {
@@ -332,6 +345,22 @@
         },
         "runtime": {
           "lib/netstandard2.0/MonoGame.Extended.dll": {}
+        },
+        "contentFiles": {
+          "contentFiles/any/any/_._": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        }
+      },
+      "MonoGame.Extended.Content.Pipeline/3.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Autofac": "5.2.0",
+          "MonoGame.Extended": "3.8.0",
+          "MonoGame.Extended.Tiled": "3.8.0",
+          "Newtonsoft.Json": "12.0.3"
         },
         "contentFiles": {
           "contentFiles/any/any/_._": {
@@ -1787,7 +1816,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "MonoGame.Extended.Tiled": "3.8.0"
+          "MonoGame.Extended.Content.Pipeline": "3.8.0"
         },
         "compile": {
           "bin/placeholder/SharedLibrary.dll": {}
@@ -1799,6 +1828,27 @@
     }
   },
   "libraries": {
+    "Autofac/5.2.0": {
+      "sha512": "V8dBH0dsv75uDzl7Sw+HkhKDPUw2eXnlMjcSVMH+tLo2s67MpTKGyDj1pDcpR+IF2u4YRs0s3/x7R88YJzIWvg==",
+      "type": "package",
+      "path": "autofac/5.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "autofac.5.2.0.nupkg.sha512",
+        "autofac.nuspec",
+        "icon.png",
+        "lib/net461/Autofac.dll",
+        "lib/net461/Autofac.pdb",
+        "lib/net461/Autofac.xml",
+        "lib/netstandard2.0/Autofac.dll",
+        "lib/netstandard2.0/Autofac.pdb",
+        "lib/netstandard2.0/Autofac.xml",
+        "lib/netstandard2.1/Autofac.dll",
+        "lib/netstandard2.1/Autofac.pdb",
+        "lib/netstandard2.1/Autofac.xml"
+      ]
+    },
     "coverlet.collector/3.1.2": {
       "sha512": "wuLDIDKD5XMt0A7lE31JPenT7QQwZPFkP5rRpdJeblyXZ9MGLI8rYjvm5fvAKln+2/X+4IxxQDxBtwdrqKNLZw==",
       "type": "package",
@@ -2499,8 +2549,6 @@
         "content/SharpDX.D3DCompiler.xml",
         "content/SharpDX.dll",
         "content/SharpDX.xml",
-        "content/gmgfxc.exe",
-        "content/gmgfxc.ico",
         "content/libmojoshader_64.dll",
         "content/mgfxc.deps.json",
         "content/mgfxc.dll",
@@ -2513,8 +2561,6 @@
         "contentFiles/any/netstandard2.0/SharpDX.D3DCompiler.xml",
         "contentFiles/any/netstandard2.0/SharpDX.dll",
         "contentFiles/any/netstandard2.0/SharpDX.xml",
-        "contentFiles/any/netstandard2.0/gmgfxc.exe",
-        "contentFiles/any/netstandard2.0/gmgfxc.ico",
         "contentFiles/any/netstandard2.0/libmojoshader_64.dll",
         "contentFiles/any/netstandard2.0/mgfxc.deps.json",
         "contentFiles/any/netstandard2.0/mgfxc.dll",
@@ -2525,6 +2571,47 @@
         "lib/netstandard2.0/MonoGame.Extended.dll",
         "monogame.extended.3.8.0.nupkg.sha512",
         "monogame.extended.nuspec"
+      ]
+    },
+    "MonoGame.Extended.Content.Pipeline/3.8.0": {
+      "sha512": "Kt21Ux4Hdkgm7FMiGhQ7C0+rMS0wMQM63TxWsNBa8DjEDwX1pKIUORxvQBgh89J4TiMSmmK+U6VfxV2kh5PPpg==",
+      "type": "package",
+      "path": "monogame.extended.content.pipeline/3.8.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/CppNet.dll",
+        "content/SharpDX.D3DCompiler.dll",
+        "content/SharpDX.D3DCompiler.xml",
+        "content/SharpDX.dll",
+        "content/SharpDX.xml",
+        "content/libmojoshader_64.dll",
+        "content/mgfxc.deps.json",
+        "content/mgfxc.dll",
+        "content/mgfxc.exe",
+        "content/mgfxc.pdb",
+        "content/mgfxc.runtimeconfig.dev.json",
+        "content/mgfxc.runtimeconfig.json",
+        "contentFiles/any/netcoreapp3.1/CppNet.dll",
+        "contentFiles/any/netcoreapp3.1/SharpDX.D3DCompiler.dll",
+        "contentFiles/any/netcoreapp3.1/SharpDX.D3DCompiler.xml",
+        "contentFiles/any/netcoreapp3.1/SharpDX.dll",
+        "contentFiles/any/netcoreapp3.1/SharpDX.xml",
+        "contentFiles/any/netcoreapp3.1/libmojoshader_64.dll",
+        "contentFiles/any/netcoreapp3.1/mgfxc.deps.json",
+        "contentFiles/any/netcoreapp3.1/mgfxc.dll",
+        "contentFiles/any/netcoreapp3.1/mgfxc.exe",
+        "contentFiles/any/netcoreapp3.1/mgfxc.pdb",
+        "contentFiles/any/netcoreapp3.1/mgfxc.runtimeconfig.dev.json",
+        "contentFiles/any/netcoreapp3.1/mgfxc.runtimeconfig.json",
+        "monogame.extended.content.pipeline.3.8.0.nupkg.sha512",
+        "monogame.extended.content.pipeline.nuspec",
+        "tools/MonoGame.Extended.Content.Pipeline.dll",
+        "tools/MonoGame.Extended.Graphics.dll",
+        "tools/MonoGame.Extended.Tiled.dll",
+        "tools/MonoGame.Extended.dll",
+        "tools/Newtonsoft.Json.dll"
       ]
     },
     "MonoGame.Extended.Graphics/3.8.0": {
@@ -6237,23 +6324,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {},
-    "G:\\VS_Shared\\NuGetPackages": {}
+    "C:\\Users\\PC\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibraryUTest\\SharedLibraryUTest.csproj",
+      "projectUniqueName": "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibraryUTest\\SharedLibraryUTest.csproj",
       "projectName": "SharedLibraryUTest",
-      "projectPath": "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibraryUTest\\SharedLibraryUTest.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibraryUTest\\obj\\",
+      "projectPath": "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibraryUTest\\SharedLibraryUTest.csproj",
+      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibraryUTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "G:\\VS_Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -6262,15 +6349,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "c:\\program files\\dotnet\\library-packs": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibrary\\SharedLibrary.csproj": {
-              "projectPath": "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibrary\\SharedLibrary.csproj"
+            "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibrary\\SharedLibrary.csproj": {
+              "projectPath": "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibrary\\SharedLibrary.csproj"
             }
           }
         }
@@ -6323,7 +6410,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

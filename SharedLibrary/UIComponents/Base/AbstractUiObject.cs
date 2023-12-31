@@ -17,7 +17,7 @@ namespace SharedLibrary.UIComponents.Base
         protected float _scale = 1f;
         protected float _rotation = 0f;
         protected Color colorMask = Color.White;
-
+        protected float _layerDepth;
         public AbstractUiObject()
         {
             _rect = new Rectangle();
@@ -88,6 +88,12 @@ namespace SharedLibrary.UIComponents.Base
         {
             get => colorMask;
             set => colorMask = value;
+        }
+
+        public virtual float LayerDepth
+        {
+            get => _layerDepth;
+            set => _layerDepth = value;
         }
 
         public virtual object Clone()

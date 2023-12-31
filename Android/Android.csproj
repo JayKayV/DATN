@@ -1,16 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-android</TargetFramework>
+    <TargetFramework>net8.0-android</TargetFramework>
     <SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
     <OutputType>Exe</OutputType>
     <ApplicationId>com.companyname.Android</ApplicationId>
     <ApplicationVersion>1</ApplicationVersion>
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-    <AndroidSdkDirectory>E:\ALT_ANDROID\android-sdk</AndroidSdkDirectory>
+    <AndroidSdkDirectory>C:\Program Files (x86)\Android\android-sdk</AndroidSdkDirectory>
     <AndroidUseApkSigner>false</AndroidUseApkSigner>
     <UseMauiEssentials>true</UseMauiEssentials>
   </PropertyGroup>
   <ItemGroup>
+	<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.3"/>
+	<PackageReference Include="Monogame.Extended.Content.Pipeline" Version="3.8.0" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Framework.Android" Version="3.8.1.303" />
 

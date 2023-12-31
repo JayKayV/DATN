@@ -28,7 +28,10 @@ namespace SharedLibrary.UIComponents
             get => _label.Text;
             set {
                 _label.Text = value;
-                _rect.Width = _label.Size.X + paddings[1] + paddings[3] + BorderThickness * 2;
+                originalStyle._label.Text = value;
+                hoverStyle._label.Text = value;
+                clickedStyle._label.Text = value;
+                _rect.Width = (int)(_label.Size.X * this.Scale) + paddings[1] + paddings[3] + BorderThickness * 2;
 
                 border.SetRefObject(this);
             }
@@ -56,8 +59,10 @@ namespace SharedLibrary.UIComponents
             string bgColor = XMLHelper.GetAttribute(attributeCollection, "bgColor", "000000", false);
             string font = XMLHelper.GetAttribute(attributeCollection, "font");
             string text = XMLHelper.GetAttribute(attributeCollection, "text", node.InnerText, false);
+            string textColor = XMLHelper.GetAttribute(attributeCollection, "color", "00FFFF", false);
 
             float scale = float.Parse(XMLHelper.GetAttribute(attributeCollection, "scale", "1", false));
+            float depth = float.Parse(XMLHelper.GetAttribute(attributeCollection, "depth", "0", false));
             int x = int.Parse(XMLHelper.GetAttribute(attributeCollection, "x", "0", false));
             int y = int.Parse(XMLHelper.GetAttribute(attributeCollection, "y", "0", false));
 
@@ -65,6 +70,8 @@ namespace SharedLibrary.UIComponents
             TextButton _button = new TextButton(graphicsDevice, _label, new Point(x, y), ColorHelper.GetColorFrom(bgColor));
             _button.Name = name;
             _button.Scale = scale;
+            _button.TextColor = ColorHelper.GetColorFrom(textColor);
+            _button.LayerDepth = depth;
             return _button;
         }
     } 

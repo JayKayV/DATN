@@ -10,7 +10,7 @@ namespace IntoTheDungeon.Gameplay.Action
             LevelTable = levelTable;
         }
 
-        public void Execute(BaseUnit unit, GameAction action, params Point[] locations) { 
+        public void Execute(Unit unit, GameAction action, params Point[] locations) { 
             
         }
     }

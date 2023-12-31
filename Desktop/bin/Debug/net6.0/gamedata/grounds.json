@@ -117,5 +117,12 @@
     "walkable": false,
     "seethrough": true,
     "effects": []
+  },
+  {
+    "tileId": 2688,
+    "name": "Exit",
+    "walkable": true,
+    "seethrough": false,
+    "effects": []
   }
 ]

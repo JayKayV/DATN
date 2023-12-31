@@ -71,10 +71,10 @@ namespace SharedLibrary.UIComponents
             Vector2 widthBorderScale = new Vector2(refRectangle.Width + thickness * 2, thickness);
             Vector2 heightBorderScale = new Vector2(thickness, refRectangle.Height);
 
-            spriteBatch.Draw(texture, topPosition, null, Color.White, refObject.Rotation, new Vector2(0, 0), widthBorderScale, SpriteEffects.None, 0f);
-            spriteBatch.Draw(texture, rightSidePosition, null, Color.White, refObject.Rotation, new Vector2(0, 0), heightBorderScale, SpriteEffects.None, 0f);
-            spriteBatch.Draw(texture, bottomPosition, null, Color.White, refObject.Rotation, new Vector2(0, 0), widthBorderScale, SpriteEffects.None, 0f);
-            spriteBatch.Draw(texture, leftSidePosition, null, Color.White, refObject.Rotation, new Vector2(0, 0), heightBorderScale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, topPosition, null, Color.White, refObject.Rotation, new Vector2(0, 0), widthBorderScale, SpriteEffects.None, refObject.LayerDepth);
+            spriteBatch.Draw(texture, rightSidePosition, null, Color.White, refObject.Rotation, new Vector2(0, 0), heightBorderScale, SpriteEffects.None, refObject.LayerDepth);
+            spriteBatch.Draw(texture, bottomPosition, null, Color.White, refObject.Rotation, new Vector2(0, 0), widthBorderScale, SpriteEffects.None, refObject.LayerDepth);
+            spriteBatch.Draw(texture, leftSidePosition, null, Color.White, refObject.Rotation, new Vector2(0, 0), heightBorderScale, SpriteEffects.None, refObject.LayerDepth);
         }
 
         public UiBorder Clone(AbstractUiObject cloneObject)

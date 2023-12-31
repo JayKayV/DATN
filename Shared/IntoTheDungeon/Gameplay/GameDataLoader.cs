@@ -1,4 +1,5 @@
-﻿using IntoTheDungeon.Gameplay.Units;
+﻿using Gameplay.Items;
+using IntoTheDungeon.Gameplay.Units;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -22,9 +23,9 @@ namespace IntoTheDungeon.Gameplay
 
         private TileSet tileSet;
         private Dictionary<string, TiledMapJsonData> mapsData;
-        private List<BaseUnit> baseUnits;
+        private List<Unit> baseUnits;
         private List<GroundData> groundData;
-        //private List
+        private List<Item> baseItems;
 
         public GameDataLoader() {
             mapsData = new Dictionary<string, TiledMapJsonData>();
@@ -41,10 +42,14 @@ namespace IntoTheDungeon.Gameplay
 
             List<UnitData> unitData = new List<UnitData>();
             unitData = (List<UnitData>)JsonHelper.ReadJsonFile(GAMEDATA_FOLDER + "/units.json", unitData.GetType());
-            baseUnits = unitData.Select(u => new BaseUnit(u)).ToList();
+            baseUnits = unitData.Select(u => new Unit(u)).ToList();
 
             groundData = new List<GroundData>();
             groundData = (List<GroundData>)JsonHelper.ReadJsonFile(GAMEDATA_FOLDER + "/grounds.json", groundData.GetType());
+
+            List<ItemData> itemData = new List<ItemData>();
+            itemData = (List<ItemData>)JsonHelper.ReadJsonFile(GAMEDATA_FOLDER + "/items.json", itemData.GetType());
+            baseItems = itemData.Select(u => new Item(u)).ToList();
 
             LoadStage(contentManager, "Test");
         }
@@ -81,7 +86,7 @@ namespace IntoTheDungeon.Gameplay
             return mapsData[mapName];
         }
 
-        public List<BaseUnit> GetUnits()
+        public List<Unit> GetUnits()
         {
             return baseUnits;
         }
@@ -89,6 +94,11 @@ namespace IntoTheDungeon.Gameplay
         public List<GroundData> GetGrounds()
         {
             return groundData;
+        }
+
+        public List<Item> GetItems()
+        {
+            return baseItems;
         }
     }
 }

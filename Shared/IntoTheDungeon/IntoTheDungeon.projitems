@@ -24,26 +24,35 @@
     <Compile Include="$(MSBuildThisFileDirectory)Gameplay\Intents\Intent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Gameplay\Items\ItemData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Gameplay\Items\Shield.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)gameplay\PlayerStateController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)gameplay\Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Gameplay\TileRenderer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game1.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)gameplay\Campaign.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)gameplay\CampaignMaster.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Gameplay\Items\BaseItem.cs" />
+    <Compile Include="..\Shared\IntoTheDungeon\Gameplay\Items\Item.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)gameplay\Level.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)gameplay\Stage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)gameplay\LevelTable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)gameplay\Tile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)gameplay\TileStatus.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)gameplay\units\BaseUnit.cs" />
+    <Compile Include="..\Shared\IntoTheDungeon\gameplay\units\Unit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Gameplay\Units\Enemies\Bandit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Gameplay\Units\UnitFactionFunc.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Gameplay\Units\UnitFunctionality.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)gameplay\units\UnitData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)scenes\AudioScript.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)scenes\Example.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)scenes\GameOverScript.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)scenes\GameSceneScript.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\LoadingScript1.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)scenes\MainGameScript.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)scenes\MenuSceneScript.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)scenes\PlayerAttackScript.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scenes\PlayerGuiScript.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)scenes\SettingsScript.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)scenes\WarningTextsScript.cs" />
+    <Compile Include="..\Shared\IntoTheDungeon\scenes\PlayerGuiScript.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)scenes\TestButtonScript.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)scenes\TestScene.cs" />
   </ItemGroup>
@@ -58,6 +67,7 @@
     <None Include="$(MSBuildThisFileDirectory)gameplay\LevelLogger.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)gamedata\effects.json" />
     <Content Include="$(MSBuildThisFileDirectory)GameData\grounds.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

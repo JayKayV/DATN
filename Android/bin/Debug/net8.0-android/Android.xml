@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Android</name>
+    </assembly>
+    <members>
+        <member name="T:IntoTheDungeon.Gameplay.Action.DoAction">
+            <summary>
+                Tell game master that unit do action on desTiles
+            </summary>
+            <param name="unit"></param>
+            <param name="actionInfo"></param>
+            <param name="_desTile"></param>
+        </member>
+        <member name="F:IntoTheDungeon.Gameplay.Action.GameAction.targets">
+            <summary>
+                <para>Represent three bit mask for Tile, Item, Unit in that order</para>
+                <para>For example, 5 => 101, means the action targeted Tile and Unit but not Item</para>
+            </summary>
+        </member>
+        <member name="M:IntoTheDungeon.Gameplay.CampaignMaster.CreatePathMap(System.Int32,System.Int32)">
+            <summary>
+                Create general pathmap with location (x, y) : observer being zero if provided
+            </summary>
+            <param name="pathMap"></param>
+            <param name="x"></param>
+            <param name="y"></param>
+        </member>
+        <member name="T:IntoTheDungeon.Gameplay.Units.UnitFactionFunc">
+            <summary>
+                Detailing how factions fight against each other, 
+                <para>The higher the score, the more friendlier faction that towards</para>
+                <para>Will mostly stay in 0-5 range </para>
+            </summary>
+        </member>
+        <member name="F:IntoTheDungeon.Gameplay.Units.UnitFunctionality.SimpleScan">
+            <summary>
+                Scan in n x n matrix, regardless of obstacles
+            </summary>
+        </member>
+        <member name="F:IntoTheDungeon.Gameplay.Units.UnitFunctionality.EyeScan">
+            <summary>
+                Scan in account of obstacles
+            </summary>
+        </member>
+        <member name="M:Shared.Gameplay.Units.Enemies.Bandit.ChaseThreat(SharedLibrary.TileSet.TileMapLayer,SharedLibrary.TileSet.TileMapLayer,Microsoft.Xna.Framework.Point,Microsoft.Xna.Framework.Point,Microsoft.Xna.Framework.Point)">
+            <summary>
+                Determine next point to move closer to the target
+            </summary>
+            <param name="groundLayer"></param>
+            <param name="unitLayer"></param>
+            <param name="location"></param>
+            <param name="mapSize"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

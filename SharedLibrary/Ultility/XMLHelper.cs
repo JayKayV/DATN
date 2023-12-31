@@ -26,7 +26,7 @@ namespace SharedLibrary.Ultility
 
             XmlReader xmlReader = XmlReader.Create(path, settings);
             XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Schemas.Add(@"http://testgame.com", "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibrary\\Scene\\scene_schema.xsd");
+            xmlDoc.Schemas.Add(@"http://testgame.com", "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibrary\\Scene\\scene_schema.xsd");
             xmlDoc.Load(xmlReader);
             try
             {

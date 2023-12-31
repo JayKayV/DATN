@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>C:/Users/PC/source/repos/DATN/Shared/IntoTheDungeon/Content/Stages/Test/TestMap0.json</SourceFile>
+  <SourceTime>2023-11-28T10:40:59.3641835-08:00</SourceTime>
+  <DestFile>C:/Users/PC/source/repos/DATN/Shared/IntoTheDungeon/Content/bin/Android/Content/Stages/Test/TestMap0.xnb</DestFile>
+  <DestTime>2023-11-30T19:13:37.2562443-08:00</DestTime>
+  <Importer>JsonContentImporter</Importer>
+  <ImporterTime>2020-08-29T10:17:30-07:00</ImporterTime>
+  <Processor>JsonContentProcessor</Processor>
+  <ProcessorTime>2020-08-29T10:17:30-07:00</ProcessorTime>
+  <Parameters>
+    <Key>ContentType</Key>
+    <Value>SharedLibrary.TileSet.Tiled.TiledMapJsonReader, SharedLibrary</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

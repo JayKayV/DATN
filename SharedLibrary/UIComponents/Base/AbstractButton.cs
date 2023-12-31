@@ -131,7 +131,7 @@ namespace SharedLibrary.UIComponents.Base
         {
             if (enableBackground)
             {
-                spriteBatch.Draw(this.backgroundTexture, this._rect.Location.ToVector2(), null, Color.White, _rotation, new Vector2(0, 0), _rect.Size.ToVector2(), SpriteEffects.None, 0f);
+                spriteBatch.Draw(this.backgroundTexture, this._rect.Location.ToVector2(), null, Color.White, _rotation, new Vector2(0, 0), _rect.Size.ToVector2(), SpriteEffects.None, LayerDepth);
                 this.border.Draw(spriteBatch);
             }
             this._label.Draw(spriteBatch);
@@ -396,6 +396,14 @@ namespace SharedLibrary.UIComponents.Base
                 (int)(_rect.X + dist * Math.Cos(_rotation + theta)),
                 (int)(_rect.Y + dist * Math.Sin(_rotation + theta))
             );
+        }
+
+        public override float LayerDepth { 
+            get => base.LayerDepth; 
+            set {
+                base.LayerDepth = value;
+                _label.LayerDepth = value;
+            }
         }
     }
 }

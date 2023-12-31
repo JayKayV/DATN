@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using SharedLibrary.BaseGameObject;
+using SharedLibrary.Event;
 
 namespace SharedLibrary.Scene
 {
@@ -44,6 +45,8 @@ namespace SharedLibrary.Scene
         }
 
         protected GameObjectManager GameObjectManager { get => scene.GetObjectManager(); }
+
+        protected EventBus EventBus { get => scene.GetSceneManager().EventBus; }
 
         protected void LoadScene(string name)
         {

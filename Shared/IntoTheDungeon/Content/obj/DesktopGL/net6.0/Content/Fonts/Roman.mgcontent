@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>E:/New/MonoGames/IntoTheDungeon/Shared/IntoTheDungeon/Content/Fonts/Roman.spritefont</SourceFile>
-  <SourceTime>2023-10-31T14:38:43.8043306+07:00</SourceTime>
-  <DestFile>E:/New/MonoGames/IntoTheDungeon/Shared/IntoTheDungeon/Content/bin/DesktopGL/Content/Fonts/Roman.xnb</DestFile>
-  <DestTime>2023-11-24T09:24:03.4851689+07:00</DestTime>
+  <SourceFile>C:/Users/PC/source/repos/DATN/Shared/IntoTheDungeon/Content/Fonts/Roman.spritefont</SourceFile>
+  <SourceTime>2023-11-28T10:40:59.3578203-08:00</SourceTime>
+  <DestFile>C:/Users/PC/source/repos/DATN/Shared/IntoTheDungeon/Content/bin/DesktopGL/Content/Fonts/Roman.xnb</DestFile>
+  <DestTime>2023-11-28T11:41:16.8947745-08:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
-  <ImporterTime>2022-07-26T18:44:56+07:00</ImporterTime>
+  <ImporterTime>2022-07-26T04:44:56-07:00</ImporterTime>
   <Processor>LocalizedFontProcessor</Processor>
-  <ProcessorTime>2022-07-26T18:44:56+07:00</ProcessorTime>
+  <ProcessorTime>2022-07-26T04:44:56-07:00</ProcessorTime>
   <Parameters>
     <Key>PremultiplyAlpha</Key>
     <Value>True</Value>

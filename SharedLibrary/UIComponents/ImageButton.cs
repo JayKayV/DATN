@@ -52,11 +52,13 @@ namespace SharedLibrary.UIComponents
             float scale = float.Parse(XMLHelper.GetAttribute(attributeCollection, "scale", "1", false));
             int x = int.Parse(XMLHelper.GetAttribute(attributeCollection, "x", "0", false));
             int y = int.Parse(XMLHelper.GetAttribute(attributeCollection, "y", "0", false));
+            float depth = float.Parse(XMLHelper.GetAttribute(attributeCollection, "depth", "0", false));
 
             ImageLabel _label = new ImageLabel(contentManager.Load<Texture2D>(src), new Point(0, 0));
             ImageButton _button = new ImageButton(graphicsDevice, _label, new Point(x, y), ColorHelper.GetColorFrom(bgColor));
             _button.Name = name;
             _button.Scale = scale;
+            _button.LayerDepth = depth;
             return _button;
         }
     }

@@ -6,8 +6,8 @@ namespace IntoTheDungeon.Gameplay
 {
     public class Tile
     {
-        private BaseUnit? unit;
-        private BaseItem? item;
+        private Unit? unit;
+        private Item? item;
         private List<StatusEffect> effects;
 
         private int lightLevel;
@@ -22,13 +22,13 @@ namespace IntoTheDungeon.Gameplay
             effects = new List<StatusEffect>();
         }
 
-        public BaseUnit Unit
+        public Unit Unit
         {
             get => unit;
             set => unit = value;
         }
 
-        public BaseItem Item
+        public Item Item
         {
             get => item;
             set => item = value;

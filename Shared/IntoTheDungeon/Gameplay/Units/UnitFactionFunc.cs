@@ -53,5 +53,14 @@ namespace IntoTheDungeon.Gameplay.Units
             { UnitFaction.Animal, 5 },
             { UnitFaction.Neutral, 5 },
         };
+
+        public static readonly Dictionary<UnitFaction, Dictionary<UnitFaction, int>> FactionMapper
+            = new Dictionary<UnitFaction, Dictionary<UnitFaction, int>>() {
+                { UnitFaction.Human, HumanFaction },
+                { UnitFaction.Undead, UndeadFaction },
+                { UnitFaction.Boss, BossFaction },
+                { UnitFaction.Neutral, NeutralFaction },
+                { UnitFaction.Animal, AnimalFaction }
+            };
     }
 }

@@ -1,7 +1,8 @@
 namespace IntoTheDungeon.Gameplay
 {
-    public class BaseItem
+    public class Item
+
     {
-        public BaseItem() { }  
+        public Item() { }  
     }
 }

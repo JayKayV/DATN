@@ -107,12 +107,7 @@ namespace SharedLibrary.UIComponents
         //Draw and update
         public override void Draw(SpriteBatch batch)
         {
-            if (this._visible)
-            {
-                batch.DrawString(_font, _text, _rect.Location.ToVector2(), Color, _rotation, new Vector2(0, 0), _scale, SpriteEffects.None, 0f);
-                /*if (_text == "Start Game")
-                    Debug.WriteLine(_rect.Location.ToVector2());*/
-            }
+            batch.DrawString(_font, _text, _rect.Location.ToVector2(), Color, _rotation, new Vector2(0, 0), _scale, SpriteEffects.None, 0f);
         }
 
         public override void Update(GameTime gameTime)
@@ -173,11 +168,16 @@ namespace SharedLibrary.UIComponents
             string text = XMLHelper.GetAttribute(attributeCollection, "text", node.InnerText, false);
             string color = XMLHelper.GetAttribute(attributeCollection, "color", "FFFFFF", false);
 
+            float scale = float.Parse(XMLHelper.GetAttribute(attributeCollection, "scale", "1", false));
+            float depth = float.Parse(XMLHelper.GetAttribute(attributeCollection, "depth", "0", false));
             int x = int.Parse(XMLHelper.GetAttribute(attributeCollection, "x", "0", false));
             int y = int.Parse(XMLHelper.GetAttribute(attributeCollection, "y", "0", false));
 
             TextLabel _label = new TextLabel(contentManager.Load<SpriteFont>(font), text, new Point(x, y));
             _label.Name = name;
+            _label.Color = ColorHelper.GetColorFrom(color);
+            _label.Scale = scale;
+            _label.LayerDepth = depth;
             return _label;
         }
     }

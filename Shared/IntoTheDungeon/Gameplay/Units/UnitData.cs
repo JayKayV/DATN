@@ -17,6 +17,8 @@ namespace IntoTheDungeon.Gameplay.Units
         public int Block { get; set; }
         public bool IsLiving { get; set; } = false;
         public string Faction { get; set; } = "Neutral";
+
+        public string Description { get; set; } = "Default description";
         public List<string> Items {  get; set; }
     }
 }

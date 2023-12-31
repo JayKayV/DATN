@@ -100,15 +100,21 @@ namespace SharedLibrary.BaseGameObject
         //Delete
         public void RemoveGameObject(GameObject gameObject)
         {
-            gameObjects.Remove(gameObject);
+            if (gameObjects.Contains(gameObject))
+            {
+                gameObject.DestroySelf();
+                gameObjects.Remove(gameObject);
+            }
         }
         public void RemoveGameObjectByPred(Predicate<GameObject> predicate)
         {
+            foreach (var gameObject in GetGameObjects(predicate))
+                gameObject.DestroySelf();
             gameObjects.RemoveAll(predicate);
         }
         public void RemoveGameObjectByPred<T>(Predicate<T> predicate) where T : GameObject
         {
-            gameObjects.RemoveAll((Predicate<GameObject>) predicate);
+            RemoveGameObjectByPred((Predicate<GameObject>) predicate);
         }
 
         public void Clear()

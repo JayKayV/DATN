@@ -79,7 +79,7 @@ namespace IntoTheDungeon.Gameplay.Action
             },
             ActionTarget.UNIT | ActionTarget.ITEM);
 
-        private static void DoAttack(BaseUnit owner, AttackInfo info, Tile[] targets)
+        private static void DoAttack(Unit owner, AttackInfo info, Tile[] targets)
         {
             int totalAttack = owner.Attack + info.AttackModifier;
             if (owner != null)
@@ -89,7 +89,7 @@ namespace IntoTheDungeon.Gameplay.Action
                 if (tile.HasUnit())
                 {
                     int totalArmor = tile.Unit.Armor;
-                    if (tile.Unit.HasBlockEffect())
+                    if (tile.Unit.IsBlocking())
                         totalArmor += tile.Unit.Block;
                     if (totalAttack > totalArmor)
                         tile.Unit.Health -= (owner.Attack - totalArmor);

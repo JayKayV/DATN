@@ -22,7 +22,7 @@ namespace IntoTheDungeon.Scenes
 
         private void LoadCampaign()
         {
-            _campaignMaster.Load(this.scene.GetContentManger(), this.scene.GetGraphicsDevice());
+            _campaignMaster.Load(this.scene.GetContentManager(), this.scene.GetGraphicsDevice());
         }
         public override void Load()
         {

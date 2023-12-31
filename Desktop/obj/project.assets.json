@@ -200,7 +200,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "MonoGame.Extended.Tiled": "3.8.0"
+          "MonoGame.Extended.Content.Pipeline": "3.8.0"
         },
         "compile": {
           "bin/placeholder/SharedLibrary.dll": {}
@@ -412,28 +412,27 @@
       "MonoGame.Content.Builder.Task >= 3.8.1.303",
       "MonoGame.Framework.DesktopGL >= 3.8.1.303",
       "Monogame.Extended.Content.Pipeline >= 3.8.0",
-      "Monogame.Extended.Tiled >= 3.8.0",
       "SharedLibrary >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {},
-    "G:\\VS_Shared\\NuGetPackages": {}
+    "C:\\Users\\PC\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\New\\MonoGames\\IntoTheDungeon\\Desktop\\Desktop.csproj",
+      "projectUniqueName": "C:\\Users\\PC\\source\\repos\\DATN\\Desktop\\Desktop.csproj",
       "projectName": "Desktop",
-      "projectPath": "E:\\New\\MonoGames\\IntoTheDungeon\\Desktop\\Desktop.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "E:\\New\\MonoGames\\IntoTheDungeon\\Desktop\\obj\\",
+      "projectPath": "C:\\Users\\PC\\source\\repos\\DATN\\Desktop\\Desktop.csproj",
+      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\PC\\source\\repos\\DATN\\Desktop\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "G:\\VS_Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -442,15 +441,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "c:\\program files\\dotnet\\library-packs": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibrary\\SharedLibrary.csproj": {
-              "projectPath": "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibrary\\SharedLibrary.csproj"
+            "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibrary\\SharedLibrary.csproj": {
+              "projectPath": "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibrary\\SharedLibrary.csproj"
             }
           }
         }
@@ -476,10 +475,6 @@
           "Monogame.Extended.Content.Pipeline": {
             "target": "Package",
             "version": "[3.8.0, )"
-          },
-          "Monogame.Extended.Tiled": {
-            "target": "Package",
-            "version": "[3.8.0, )"
           }
         },
         "imports": [
@@ -498,7 +493,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

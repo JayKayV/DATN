@@ -19,6 +19,14 @@
           "SharedLibraryUTest.dll": {}
         }
       },
+      "Autofac/5.2.0": {
+        "runtime": {
+          "lib/netstandard2.1/Autofac.dll": {
+            "assemblyVersion": "5.2.0.0",
+            "fileVersion": "5.2.0.0"
+          }
+        }
+      },
       "coverlet.collector/3.1.2": {},
       "Microsoft.CodeCoverage/17.1.0": {
         "runtime": {
@@ -299,6 +307,14 @@
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
+        }
+      },
+      "MonoGame.Extended.Content.Pipeline/3.8.0": {
+        "dependencies": {
+          "Autofac": "5.2.0",
+          "MonoGame.Extended": "3.8.0",
+          "MonoGame.Extended.Tiled": "3.8.0",
+          "Newtonsoft.Json": "12.0.3"
         }
       },
       "MonoGame.Extended.Graphics/3.8.0": {
@@ -1095,7 +1111,7 @@
       },
       "SharedLibrary/1.0.0": {
         "dependencies": {
-          "MonoGame.Extended.Tiled": "3.8.0"
+          "MonoGame.Extended.Content.Pipeline": "3.8.0"
         },
         "runtime": {
           "SharedLibrary.dll": {}
@@ -1108,6 +1124,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Autofac/5.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-V8dBH0dsv75uDzl7Sw+HkhKDPUw2eXnlMjcSVMH+tLo2s67MpTKGyDj1pDcpR+IF2u4YRs0s3/x7R88YJzIWvg==",
+      "path": "autofac/5.2.0",
+      "hashPath": "autofac.5.2.0.nupkg.sha512"
     },
     "coverlet.collector/3.1.2": {
       "type": "package",
@@ -1171,6 +1194,13 @@
       "sha512": "sha512-FDPoUOFtslGNHCWSqjKD0C67RYN6Stb6NWnn+rkCmtkPBZlE6LvwuGyQBkHUkAMANO3LzO/Wsz9etMhwZLInqg==",
       "path": "monogame.extended/3.8.0",
       "hashPath": "monogame.extended.3.8.0.nupkg.sha512"
+    },
+    "MonoGame.Extended.Content.Pipeline/3.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Kt21Ux4Hdkgm7FMiGhQ7C0+rMS0wMQM63TxWsNBa8DjEDwX1pKIUORxvQBgh89J4TiMSmmK+U6VfxV2kh5PPpg==",
+      "path": "monogame.extended.content.pipeline/3.8.0",
+      "hashPath": "monogame.extended.content.pipeline.3.8.0.nupkg.sha512"
     },
     "MonoGame.Extended.Graphics/3.8.0": {
       "type": "package",

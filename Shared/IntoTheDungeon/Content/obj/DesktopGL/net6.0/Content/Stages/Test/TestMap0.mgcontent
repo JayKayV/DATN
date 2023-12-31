@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>E:/New/MonoGames/IntoTheDungeon/Shared/IntoTheDungeon/Content/Stages/Test/TestMap0.json</SourceFile>
-  <SourceTime>2023-11-24T08:55:02.7975227+07:00</SourceTime>
-  <DestFile>E:/New/MonoGames/IntoTheDungeon/Shared/IntoTheDungeon/Content/bin/DesktopGL/Content/Stages/Test/TestMap0.xnb</DestFile>
-  <DestTime>2023-11-24T09:34:30.1227826+07:00</DestTime>
+  <SourceFile>C:/Users/PC/source/repos/DATN/Shared/IntoTheDungeon/Content/Stages/Test/TestMap0.json</SourceFile>
+  <SourceTime>2023-11-28T10:40:59.3641835-08:00</SourceTime>
+  <DestFile>C:/Users/PC/source/repos/DATN/Shared/IntoTheDungeon/Content/bin/DesktopGL/Content/Stages/Test/TestMap0.xnb</DestFile>
+  <DestTime>2023-11-28T11:41:17.0026133-08:00</DestTime>
   <Importer>JsonContentImporter</Importer>
-  <ImporterTime>2020-08-30T00:17:30+07:00</ImporterTime>
+  <ImporterTime>2020-08-29T10:17:30-07:00</ImporterTime>
   <Processor>JsonContentProcessor</Processor>
-  <ProcessorTime>2020-08-30T00:17:30+07:00</ProcessorTime>
+  <ProcessorTime>2020-08-29T10:17:30-07:00</ProcessorTime>
   <Parameters>
     <Key>ContentType</Key>
     <Value>SharedLibrary.TileSet.Tiled.TiledMapJsonReader, SharedLibrary</Value>

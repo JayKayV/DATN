@@ -1,40 +1,40 @@
 {
   "format": 1,
   "restore": {
-    "E:\\New\\MonoGames\\IntoTheDungeon\\Android\\Android.csproj": {}
+    "C:\\Users\\PC\\source\\repos\\DATN\\Android\\Android.csproj": {}
   },
   "projects": {
-    "E:\\New\\MonoGames\\IntoTheDungeon\\Android\\Android.csproj": {
+    "C:\\Users\\PC\\source\\repos\\DATN\\Android\\Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\New\\MonoGames\\IntoTheDungeon\\Android\\Android.csproj",
+        "projectUniqueName": "C:\\Users\\PC\\source\\repos\\DATN\\Android\\Android.csproj",
         "projectName": "Android",
-        "projectPath": "E:\\New\\MonoGames\\IntoTheDungeon\\Android\\Android.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\New\\MonoGames\\IntoTheDungeon\\Android\\obj\\",
+        "projectPath": "C:\\Users\\PC\\source\\repos\\DATN\\Android\\Android.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PC\\source\\repos\\DATN\\Android\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "G:\\VS_Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-android"
+          "net8.0-android"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "c:\\program files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0-android31.0": {
-            "targetAlias": "net6.0-android",
+          "net8.0-android34.0": {
+            "targetAlias": "net8.0-android",
             "projectReferences": {
-              "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibrary\\SharedLibrary.csproj": {
-                "projectPath": "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibrary\\SharedLibrary.csproj"
+              "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibrary\\SharedLibrary.csproj": {
+                "projectPath": "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibrary\\SharedLibrary.csproj"
               }
             }
           }
@@ -46,12 +46,17 @@
         }
       },
       "frameworks": {
-        "net6.0-android31.0": {
-          "targetAlias": "net6.0-android",
+        "net8.0-android34.0": {
+          "targetAlias": "net8.0-android",
           "dependencies": {
-            "Microsoft.Maui.Dependencies": {
+            "Microsoft.Maui.Essentials": {
               "target": "Package",
-              "version": "[6.0.553, )",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.NET.ILLink.Tasks": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )",
               "autoReferenced": true
             },
             "MonoGame.Content.Builder.Task": {
@@ -61,6 +66,10 @@
             "MonoGame.Framework.Android": {
               "target": "Package",
               "version": "[3.8.1.303, )"
+            },
+            "Monogame.Extended.Content.Pipeline": {
+              "target": "Package",
+              "version": "[3.8.0, )"
             }
           },
           "imports": [
@@ -74,60 +83,15 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.Android.Ref.31",
-              "version": "[32.0.509, 32.0.509]"
-            },
-            {
-              "name": "Microsoft.Android.Runtime.31.android-arm",
-              "version": "[32.0.509, 32.0.509]"
-            },
-            {
-              "name": "Microsoft.Android.Runtime.31.android-arm64",
-              "version": "[32.0.509, 32.0.509]"
-            },
-            {
-              "name": "Microsoft.Android.Runtime.31.android-x64",
-              "version": "[32.0.509, 32.0.509]"
-            },
-            {
-              "name": "Microsoft.Android.Runtime.31.android-x86",
-              "version": "[32.0.509, 32.0.509]"
-            },
-            {
-              "name": "Microsoft.AspNetCore.App.Runtime.linux-arm",
-              "version": "[6.0.22, 6.0.22]"
-            },
-            {
-              "name": "Microsoft.AspNetCore.App.Runtime.linux-arm64",
-              "version": "[6.0.22, 6.0.22]"
-            },
-            {
-              "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
-              "version": "[6.0.22, 6.0.22]"
-            },
-            {
-              "name": "Microsoft.Maui.Essentials.Ref.android",
-              "version": "[6.0.553, 6.0.553]"
-            },
-            {
-              "name": "Microsoft.Maui.Essentials.Runtime.android",
-              "version": "[6.0.553, 6.0.553]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.Android": {
-              "privateAssets": "all"
-            },
-            "Microsoft.Maui.Essentials": {
               "privateAssets": "all"
             },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -145,20 +109,20 @@
         }
       }
     },
-    "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibrary\\SharedLibrary.csproj": {
+    "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibrary\\SharedLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibrary\\SharedLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibrary\\SharedLibrary.csproj",
         "projectName": "SharedLibrary",
-        "projectPath": "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibrary\\SharedLibrary.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibrary\\obj\\",
+        "projectPath": "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibrary\\SharedLibrary.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "G:\\VS_Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -167,7 +131,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "c:\\program files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -186,7 +150,7 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "MonoGame.Extended.Tiled": {
+            "MonoGame.Extended.Content.Pipeline": {
               "target": "Package",
               "version": "[3.8.0, )"
             },
@@ -212,7 +176,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

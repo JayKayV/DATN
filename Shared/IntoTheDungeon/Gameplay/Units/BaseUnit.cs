@@ -1,4 +1,5 @@
 using IntoTheDungeon.Gameplay.Effect;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic; 
 
 namespace IntoTheDungeon.Gameplay.Units
@@ -16,6 +17,7 @@ namespace IntoTheDungeon.Gameplay.Units
     public class BaseUnit
     {
         protected string name;
+        protected string description;
 
         protected int attackRange = 0;
         protected int moveRange = 0;
@@ -24,17 +26,22 @@ namespace IntoTheDungeon.Gameplay.Units
         protected int armor = 0;
         protected int attack = 0;
         protected int block = 0;
+
         protected bool isLiving = false;
 
         protected int tileId = 1;
         protected int deadTileId = 1;
-        
+
         protected bool isAlive = true;
 
         private UnitFaction faction = UnitFaction.Neutral;
         private List<BaseItem> items = new List<BaseItem>();
         private List<StatusEffect> effects = new List<StatusEffect>();
 
+        public List<Point> ChasePoints { get; set; } = new List<Point>();
+        public int ChaseTargetId { get; set; } = 0;
+
+        public string Name { get => name; }
         public int AttackRange { get => attackRange; set => attackRange = value; }
         public int MoveRange { get => moveRange; set => moveRange = value; }
         public int DetectRange { get => eyeRange; set => eyeRange = value; }
@@ -43,9 +50,11 @@ namespace IntoTheDungeon.Gameplay.Units
         public int Attack { get => attack; set => attack = value; }
         public int Block { get => block; set => block = value; }
         public bool IsLiving { get => isLiving; set => isLiving = value; }
-
+        public string Description { get => description; set => description = value; }
         public int TileId { get => tileId; }
         public int DeadTileId { get => deadTileId; }
+
+        public UnitFaction Faction { get => faction; }
 
         public BaseUnit()
         {
@@ -54,6 +63,7 @@ namespace IntoTheDungeon.Gameplay.Units
         public BaseUnit(UnitData unitData)
         {
             name = unitData.Name;
+            description = unitData.Description;
             attackRange = unitData.AttackRange;
             moveRange = unitData.MoveRange;
             eyeRange = unitData.EyeRange;
@@ -93,6 +103,7 @@ namespace IntoTheDungeon.Gameplay.Units
         public BaseUnit(UnitData unitData, UnitFaction faction)
         {
             name = unitData.Name;
+            description = unitData.Description;
             attackRange = unitData.AttackRange;
             moveRange = unitData.MoveRange;
             eyeRange = unitData.EyeRange;
@@ -142,10 +153,12 @@ namespace IntoTheDungeon.Gameplay.Units
             return effects.Contains(effect);
         }
 
-        public bool HasBlockEffect()
+        public bool IsBlocking()
         {
             StatusEffect effect = effects.Find(e => e.Type == EffectType.BLOCK);
-            return effect != null;
+            if (effect == null) 
+                return false;
+            return effect.Duration == 0;
         }
 
         public Dictionary<UnitFaction, int> FactionFunc = UnitFactionFunc.NeutralFaction;
@@ -153,6 +166,21 @@ namespace IntoTheDungeon.Gameplay.Units
         public BaseUnit Clone()
         {
             return this.MemberwiseClone() as BaseUnit;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{{{0},{1},{2}}}", name, eyeRange, faction);
+        }
+
+        public void CheckHealth()
+        {
+            if (Health <= 0)
+            {
+                IsLiving = false;
+                Health = 0;
+                tileId = DeadTileId;
+            }
         }
     }
 }

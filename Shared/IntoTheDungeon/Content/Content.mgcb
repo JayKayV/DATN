@@ -10,9 +10,21 @@
 
 #-------------------------------- References --------------------------------#
 
-/reference:C:\Users\Admin\.nuget\packages\monogame.extended.content.pipeline\3.8.0\tools\MonoGame.Extended.Content.Pipeline.dll
+/reference:C:\Users\PC\.nuget\packages\monogame.extended.content.pipeline\3.8.0\tools\MonoGame.Extended.Content.Pipeline.dll
 
 #---------------------------------- Content ---------------------------------#
+
+#begin Audio/ingame.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Audio/ingame.mp3
+
+#begin Audio/menu.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Audio/menu.mp3
 
 #begin Fonts/Cambria.spritefont
 /importer:FontDescriptionImporter
@@ -105,6 +117,18 @@
 /processor:JsonContentProcessor
 /processorParam:ContentType=SharedLibrary.TileSet.Tiled.TiledMapJsonReader, SharedLibrary
 /build:Stages/Test/TestMap0.json
+
+#begin Stages/Test/TestMap1.json
+/importer:JsonContentImporter
+/processor:JsonContentProcessor
+/processorParam:ContentType=SharedLibrary.TileSet.Tiled.TiledMapJsonReader, SharedLibrary
+/build:Stages/Test/TestMap1.json
+
+#begin Stages/Test/TestMap2.json
+/importer:JsonContentImporter
+/processor:JsonContentProcessor
+/processorParam:ContentType=SharedLibrary.TileSet.Tiled.TiledMapJsonReader, SharedLibrary
+/build:Stages/Test/TestMap2.json
 
 #begin TileSet/urizen_onebit_tileset__v1d0.png
 /importer:TextureImporter

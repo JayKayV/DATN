@@ -13,11 +13,16 @@ namespace SharedLibrary.BaseGameObject
         protected bool _visible = true;
         protected bool _enabled = true;
 
+        public int DrawOrder { get; set; } = 0;
+        public int UpdateOrder { get; set; } = 0;
+
         #nullable enable
         public event EventHandler<bool>? OnVisibleChanged;
 
         #nullable enable
         public event EventHandler<bool>? OnEnabledChanged;
+
+        public event EventHandler? OnDestroyed;
 
         public GameObject()
         {
@@ -47,6 +52,17 @@ namespace SharedLibrary.BaseGameObject
 
         public abstract void Update(GameTime gameTime);
         public abstract void Draw(SpriteBatch spriteBatch);
+
+        public void DestroySelf()
+        {
+            Destroy();
+            OnDestroyed?.Invoke(this, null);
+        }
+
+        public virtual void Destroy()
+        {
+
+        }
 
         public void UpdateIfEnabled(GameTime gameTime)
         {

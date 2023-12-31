@@ -9,7 +9,7 @@ namespace IntoTheDungeon.Gameplay.Action
             "Basic block",
             "A simple block",
             (owner, info, targets) => {
-                if (owner != null && !owner.HasBlockEffect())
+                if (owner != null && !owner.IsBlocking())
                 {
                     owner.AddEffect(UnitEffects.CreateBlockEffect(1, 0));
                 }

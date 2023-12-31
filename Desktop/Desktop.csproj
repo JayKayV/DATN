@@ -10,9 +10,18 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>$(DefineConstants);DESKTOP</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
+    <None Remove="Config\scenes.xml" />
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\scenes.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -21,7 +30,6 @@
   <ItemGroup>
     <!--<PackageReference Include="Monogame.Extended" Version="3.8.0" />-->
     <PackageReference Include="Monogame.Extended.Content.Pipeline" Version="3.8.0" />
-    <PackageReference Include="Monogame.Extended.Tiled" Version="3.8.0" />
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
 

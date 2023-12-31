@@ -4,13 +4,24 @@ using SharedLibrary.Input;
 using System.Diagnostics;
 using SharedLibrary.BaseGameObject;
 using SharedLibrary.Ultility;
-using MonoGame.Extended.Tiled;
 using Microsoft.Xna.Framework.Content;
 using SharedLibrary.TileSet.Tiled;
 using System;
 
 namespace SharedLibrary.TileSet
 {
+    public class TileChangedEvent : EventArgs
+    {
+        public Point OldTile { get; set; }
+        public Point NewTile { get; set; }
+
+        public TileChangedEvent(Point OldTile, Point NewTile)
+        {
+            this.OldTile = OldTile;
+            this.NewTile = NewTile;
+        }
+    }
+
     public class TileMapManager : GameObject
     {
         private TileMap tileMap;
@@ -29,15 +40,41 @@ namespace SharedLibrary.TileSet
             }
         }
 
+        public event EventHandler<TileChangedEvent>? OnFocusTileChanged;
+
+        public event EventHandler<TileChangedEvent>? OnHoverTileChanged;
+
         public bool EnableMapLine { get => tileMapRenderer.DrawLine; set => tileMapRenderer.DrawLine = value; }
 
         public bool EnableHoverBorder { get; set; } = true;
 
         //for gameplay
-        private Point focusTileLocation = new Point(-1, -1);
+        private Point focusTileLocation = new Point(0, 0);
+        private Point hoverTileLocation = new Point(-1, -1);
+
         public Color TileMapBorderColor { 
             get => tileMapRenderer.LineColor; 
             set => tileMapRenderer.LineColor = value;
+        }
+
+        public TileMap TileMap
+        {
+            get => tileMap;
+        }
+
+        public void LoadMap(TileMap tileMap)
+        {
+            this.tileMap = tileMap;
+        }
+
+        public TileMapLayer? GetLayer(string name)
+        {
+            return tileMap.GetLayerByName(name);
+        }
+
+        public Point FocusTilePosition
+        {
+            get => focusTileLocation;
         }
 
         public TileMapManager(GraphicsDevice graphicsDevice, TileMap tileMap, TileSet tileSet, Point location)
@@ -62,19 +99,15 @@ namespace SharedLibrary.TileSet
             rect = new Rectangle(location, tileMap.GetActualSize(Spacing, Scale));
         }
 
-        public TileMap TileMap { 
-            get => tileMap;
-        }
-
-        public void LoadMap(TileMap tileMap)
-        {
-            this.tileMap = tileMap;
-        }
-
         public void LoadMap(ContentManager contentManager, string tileMapPath)
         {
             TiledMapJsonData mapData = contentManager.Load<TiledMapJsonData>(tileMapPath);
             this.tileMap = new TileMap(mapData);
+        }
+
+        public void LoadMap(TiledMapJsonData data)
+        {
+            this.tileMap = new TileMap(data);
         }
 
         public override void Update(GameTime gameTime)
@@ -90,10 +123,22 @@ namespace SharedLibrary.TileSet
                 int x = (mouseLocation.X - Location.X) / tileRectSize.X;
                 int y = (mouseLocation.Y - Location.Y) / tileRectSize.Y;
 
-                focusTileLocation = new Point(x, y);
+                Point newLocation = new Point(y, x);
+                if (MouseHandler.Instance.HasClicked(MouseButton.LEFT_BUTTON))
+                {
+                    Point oldLocation = focusTileLocation;
+                    focusTileLocation = newLocation;
+                    OnFocusTileChanged?.Invoke(this, new TileChangedEvent(oldLocation, focusTileLocation));
+                }
+
+                Point oldHoverLocation = hoverTileLocation;
+                hoverTileLocation = new Point(x, y);
+
+                OnHoverTileChanged?.Invoke(this, new TileChangedEvent(oldHoverLocation, hoverTileLocation));
+                
             } else
             {
-                focusTileLocation = new Point(-1, -1);
+                hoverTileLocation = new Point(-1, -1);
             }
         }
 
@@ -102,32 +147,14 @@ namespace SharedLibrary.TileSet
             tileMapRenderer.Draw(spriteBatch, tileMap, tileSet, Location, Scale);
             if (EnableHoverBorder)
             {
-                if (focusTileLocation.X >= 0 && focusTileLocation.Y >= 0) 
+                if (hoverTileLocation.X >= 0 && hoverTileLocation.Y >= 0) 
                 {
-                    tileMapRenderer.DrawTileBorder(spriteBatch, tileMap, focusTileLocation.X, focusTileLocation.Y, Location, Scale);
+                    tileMapRenderer.DrawTileBorder(spriteBatch, tileMap, hoverTileLocation.X, hoverTileLocation.Y, Location, Scale);
                 }
             }
         }
 
-        public void AlignCenter(Rectangle bound, bool alignHorizontal = true, bool alignVertical = true)
-        {
-            Point alignedPosition = Helper.AlignCenter(bound, rect.Size, alignHorizontal, alignVertical);
-            if (alignHorizontal)
-                rect.X = alignedPosition.X;
-            if (alignVertical)
-                rect.Y = alignedPosition.Y;
-        }
-
-        public TileMapLayer? GetLayer(string name)
-        {
-            return tileMap.GetLayerByName(name);
-        }
-
-        public Point FocusTilePosition
-        {
-            get => focusTileLocation;
-        }
-
+        //Tile operations on TileMap
         public void SwapInLayer(string layerName, int x1, int y1, int x2, int y2)
         {
             TileMapLayer? layer = tileMap.GetLayerByName(layerName);
@@ -143,6 +170,45 @@ namespace SharedLibrary.TileSet
                 throw new ArgumentException("Either coordinates must be within bounds!");
 
             tileMap.SwapTile(x1, y1, x2, y2);
+        }
+
+        public void AssignValue(string layerName, int x, int y, int newValue)
+        {
+            tileMap.AssignValue(layerName, x, y, newValue);
+        }
+        /// <summary>
+        ///     Get tile's actual drawing location from self.Location, row X and column Y
+        /// </summary>
+        /// <param name="x">row X</param>
+        /// <param name="y">column Y</param>
+        public Point GetTileLocation(int x, int y)
+        {
+            int _x = this.Location.X + (int)(this.tileSet.TileWidth * Scale + Spacing) * y;
+            int _y = this.Location.Y + (int)(this.tileSet.TileHeight * Scale + Spacing) * x;
+
+            return new Point(_x, _y);
+        }
+
+        /// <summary>
+        ///     Get tile's actual drawing rectangle from self.Location, row X and column Y
+        /// </summary>
+        /// <param name="x">row X</param>
+        /// <param name="y">column Y</param>
+        public Rectangle GetTileRect(int x, int y)
+        {
+            Point drawLocation = GetTileLocation(x, y);
+
+            return new Rectangle(drawLocation, tileSet.TileSize * new Vector2(Scale, Scale).ToPoint());
+        }
+
+        //Ultilities
+        public void AlignCenter(Rectangle bound, bool alignHorizontal = true, bool alignVertical = true)
+        {
+            Point alignedPosition = Helper.AlignCenter(bound, rect.Size, alignHorizontal, alignVertical);
+            if (alignHorizontal)
+                rect.X = alignedPosition.X;
+            if (alignVertical)
+                rect.Y = alignedPosition.Y;
         }
     }
 }

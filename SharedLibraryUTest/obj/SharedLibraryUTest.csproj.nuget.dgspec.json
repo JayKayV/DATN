@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibraryUTest\\SharedLibraryUTest.csproj": {}
+    "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibraryUTest\\SharedLibraryUTest.csproj": {}
   },
   "projects": {
-    "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibraryUTest\\SharedLibraryUTest.csproj": {
+    "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibraryUTest\\SharedLibraryUTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibraryUTest\\SharedLibraryUTest.csproj",
+        "projectUniqueName": "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibraryUTest\\SharedLibraryUTest.csproj",
         "projectName": "SharedLibraryUTest",
-        "projectPath": "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibraryUTest\\SharedLibraryUTest.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibraryUTest\\obj\\",
+        "projectPath": "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibraryUTest\\SharedLibraryUTest.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibraryUTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "G:\\VS_Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,15 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "c:\\program files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibrary\\SharedLibrary.csproj": {
-                "projectPath": "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibrary\\SharedLibrary.csproj"
+              "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibrary\\SharedLibrary.csproj": {
+                "projectPath": "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibrary\\SharedLibrary.csproj"
               }
             }
           }
@@ -87,24 +87,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibrary\\SharedLibrary.csproj": {
+    "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibrary\\SharedLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibrary\\SharedLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibrary\\SharedLibrary.csproj",
         "projectName": "SharedLibrary",
-        "projectPath": "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibrary\\SharedLibrary.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\New\\MonoGames\\IntoTheDungeon\\SharedLibrary\\obj\\",
+        "projectPath": "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibrary\\SharedLibrary.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PC\\source\\repos\\DATN\\SharedLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "G:\\VS_Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -113,7 +113,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "c:\\program files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -132,7 +132,7 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "MonoGame.Extended.Tiled": {
+            "MonoGame.Extended.Content.Pipeline": {
               "target": "Package",
               "version": "[3.8.0, )"
             },
@@ -158,7 +158,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

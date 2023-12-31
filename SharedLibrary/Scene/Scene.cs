@@ -9,6 +9,7 @@ using SharedLibrary.UIComponents;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using SharedLibrary.Ultility;
 
 namespace SharedLibrary.Scene
 {
@@ -62,9 +63,20 @@ namespace SharedLibrary.Scene
                     case "textArea":
                         uiObject = TextArea.LoadFromXml(node, contentManager, graphicsDevice);
                         break;
+                    case "uiFrame":
+                        XmlNodeList childNodes = node.ChildNodes;
+                        List<AbstractUiObject> frameObjects = LoadHelper.LoadUiObjects(childNodes, contentManager, graphicsDevice);
+                        uiObject = UiFrame.LoadFromXml(node, contentManager, graphicsDevice, frameObjects);
+                        break;
                     default:
                         Debug.WriteLine($"[WARNING]: Incorrect type or bad element while parsing node index {index}");
                         break;
+                }
+                if (uiObject.GetType() == typeof(UiFrame))
+                {
+                    UiFrame temp = (UiFrame) uiObject;
+                    foreach (var frameObject in temp.GetObjects())
+                        gameObjectManager.AddGameObject(frameObject);
                 }
                 gameObjectManager.AddGameObject(uiObject);
             }
@@ -88,9 +100,9 @@ namespace SharedLibrary.Scene
         }
         public void Update(GameTime gameTime)
         {
-            foreach (var gObject in gameObjectManager.GetGameObjects())
+            foreach (var gObject in gameObjectManager.GetGameObjects().OrderByDescending(g => g.UpdateOrder))
             {
-                gObject.Update(gameTime);
+                gObject.UpdateIfEnabled(gameTime);
                 if (!sceneManager.ContinueUpdate)
                     return;
             }
@@ -98,15 +110,19 @@ namespace SharedLibrary.Scene
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var gObject in gameObjectManager.GetGameObjects())
+            foreach (var gObject in gameObjectManager.GetGameObjects().OrderByDescending(g => g.DrawOrder))
             {
-                gObject.Draw(spriteBatch);
+                gObject.DrawIfVisible(spriteBatch);
             }
             scriptsManager.Draw(spriteBatch);
         }
         public void Destroy()
         {
             scriptsManager.Clear();
+            foreach (var gObject in gameObjectManager.GetGameObjects())
+            {
+                gObject.DestroySelf();
+            }
             gameObjectManager.Clear();
         }
 
@@ -129,7 +145,7 @@ namespace SharedLibrary.Scene
             return gameObjectManager;
         }
 
-        public ContentManager GetContentManger()
+        public ContentManager GetContentManager()
         {
             return sceneManager.ContentManager;
         }

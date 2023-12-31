@@ -1,0 +1,6 @@
+cache-path;C:\Users\PC\source\repos\DATN\Android\obj\Debug\net8.0-android\lp\45\jl\res\xml\microsoft_maui_essentials_fileprovider_file_paths.xml
+external-cache-path;C:\Users\PC\source\repos\DATN\Android\obj\Debug\net8.0-android\lp\45\jl\res\xml\microsoft_maui_essentials_fileprovider_file_paths.xml
+external-path;C:\Users\PC\source\repos\DATN\Android\obj\Debug\net8.0-android\lp\45\jl\res\xml\microsoft_maui_essentials_fileprovider_file_paths.xml
+paths;C:\Users\PC\source\repos\DATN\Android\obj\Debug\net8.0-android\lp\45\jl\res\xml\microsoft_maui_essentials_fileprovider_file_paths.xml
+resources;obj\Debug\net8.0-android\res\values\strings.xml
+string;obj\Debug\net8.0-android\res\values\strings.xml

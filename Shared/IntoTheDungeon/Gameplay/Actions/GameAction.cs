@@ -9,7 +9,7 @@ namespace IntoTheDungeon.Gameplay.Action
     /// <param name="unit"></param>
     /// <param name="actionInfo"></param>
     /// <param name="_desTile"></param>
-    public delegate void DoAction(BaseUnit unit, ActionInfo actionInfo, params Tile[] desTiles);
+    public delegate void DoAction(Unit unit, ActionInfo actionInfo, params Tile[] desTiles);
 
     public enum ACTION_TYPE
     {

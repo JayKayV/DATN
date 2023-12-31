@@ -11,7 +11,6 @@ namespace IntoTheDungeon.Scenes
         private TextButton gameSceneButton;
         private TextButton settingsButton;
         private TextButton quitButton;
-
         public override void Load()
         {
             gameSceneButton = GameObjectManager.GetGameObjectByName("gameSceneButton") as TextButton;
@@ -40,6 +39,12 @@ namespace IntoTheDungeon.Scenes
             quitButton.HoverStyle.TextColor = Color.Yellow;
 
             quitButton.OnClick += QuitButton_OnClick;
+            settingsButton.OnClick += SettingsButton_OnClick;
+        }
+
+        private void SettingsButton_OnClick(object sender, OnClickArgs e)
+        {
+            LoadScene("Settings Scene");
         }
 
         private void QuitButton_OnClick(object sender, OnClickArgs e)

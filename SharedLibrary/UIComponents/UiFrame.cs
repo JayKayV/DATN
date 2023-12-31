@@ -6,6 +6,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Xml;
 using Microsoft.Xna.Framework.Content;
+using SharedLibrary.Ultility;
+using System.ComponentModel;
+using System.Reflection.Emit;
+using Autofac.Core;
 
 namespace SharedLibrary.UIComponents
 {
@@ -31,8 +35,10 @@ namespace SharedLibrary.UIComponents
         private List<AbstractUiObject> uiObjects = new List<AbstractUiObject>();
         private List<Point> relativeDistances = new List<Point>();
 
+        private UiBorder border;
+
         private readonly Texture2D background;
-        public FrameLayout Layout { get; set; } = FrameLayout.DEFAULT;
+        public FrameLayout Layout { get; set; } = FrameLayout.RELATIVE;
 
         /// <summary>
         ///     Determine should the frame stretch to fit the content
@@ -49,56 +55,63 @@ namespace SharedLibrary.UIComponents
         {
             background = new Texture2D(device, 1, 1);
             background.SetData(new Color[] { Color.Gray });
+
+            border = new UiBorder(device, this);
         }
 
         public UiFrame(Rectangle rect, GraphicsDevice device) : base(rect) 
         {
             background = new Texture2D(device, 1, 1);
             background.SetData(new Color[] { Color.Gray });
+
+            border = new UiBorder(device, this);
         }
 
         public UiFrame(Point location, Point size, GraphicsDevice device, Color bgColor) : base(location, size)
         {
             background = new Texture2D(device, 1, 1);
             background.SetData(new Color[] { bgColor });
+
+            border = new UiBorder(device, this);
         }
 
         public UiFrame(Rectangle rect, GraphicsDevice device, Color bgColor) : base(rect)
         {
             background = new Texture2D(device, 1, 1);
             background.SetData(new Color[] { bgColor });
+
+            border = new UiBorder(device, this);
         }
 
         public UiFrame(Point location, Point size, Texture2D image): base(location, size)
         {
             background = image;
+
+            border = new UiBorder(image.GraphicsDevice, this);
         }
 
         public UiFrame(Rectangle rect, Texture2D image) : base(rect)
         {
             background = image;
+
+            border = new UiBorder(image.GraphicsDevice, this);
         }
 
         //Draw and update
         public override void Draw(SpriteBatch batch)
         {
-            if (_visible)
+            batch.Draw(background, _rect.Location.ToVector2(), null, Color.White, Rotation, new Vector2(0, 0), _rect.Size.ToVector2(), SpriteEffects.None, LayerDepth);
+            border.Draw(batch);
+            foreach (var uiObject in uiObjects)
             {
-                batch.Draw(background, _rect.Location.ToVector2(), null, Color.White, Rotation, new Vector2(0, 0), Scale, SpriteEffects.None, 0f);
-                foreach (var uiObject in uiObjects)
-                {
-                    uiObject.Draw(batch);
-                    //Debug.WriteLine(string.Format("#_{0}", uiObject.Position));
-                }
+                uiObject.Draw(batch);
+               //Debug.WriteLine(string.Format("#_{0}", uiObject.Position));
             }
         }
 
         public override void Update(GameTime gameTime)
         {
-            foreach (var uiObject in uiObjects)
-            {
-                uiObject.UpdateIfEnabled(gameTime);
-            } 
+
         }
 
         //useful methods
@@ -142,7 +155,38 @@ namespace SharedLibrary.UIComponents
         protected override void ApplyStyle(UiFrame style)
         {
 
-        } 
+        }
+
+        public int BorderThickness
+        {
+            get => this.border.Thickness;
+            set
+            {
+                this.border.Thickness = value;
+                border.SetRefObject(this);
+                if (originalStyle != null)
+                    originalStyle.BorderThickness = value;
+                if (hoverStyle != null)
+                    hoverStyle.BorderThickness = value;
+                if (clickedStyle != null)
+                    clickedStyle.BorderThickness = value;
+            }
+        }
+
+        public Color BorderColor
+        {
+            get => this.border.Color;
+            set
+            {
+                this.border.Color = value;
+                if (originalStyle != null)
+                    originalStyle.border.Color = value;
+                if (hoverStyle != null)
+                    hoverStyle.border.Color = value;
+                if (clickedStyle != null)
+                    clickedStyle.border.Color = value;
+            }
+        }
 
         public override Point Position
         {
@@ -163,11 +207,48 @@ namespace SharedLibrary.UIComponents
             }
         }
 
-        public static UiFrame LoadFromXml(XmlNode xmlNode, ContentManager contentManager, GraphicsDevice graphicsDevice)
+        public static UiFrame LoadFromXml(XmlNode xmlNode, 
+            ContentManager contentManager, 
+            GraphicsDevice graphicsDevice, 
+            List<AbstractUiObject> frameObjects)
         {
-            return new UiFrame(Rectangle.Empty, graphicsDevice);
-        }
+            XmlAttributeCollection attributeCollection = xmlNode.Attributes;
 
+            string name = XMLHelper.GetAttribute(attributeCollection, "name", "Frame", false);
+            string color = XMLHelper.GetAttribute(attributeCollection, "color", "FFFFFF", false);
+
+            int x = int.Parse(XMLHelper.GetAttribute(attributeCollection, "x", "0", false));
+            int y = int.Parse(XMLHelper.GetAttribute(attributeCollection, "y", "0", false));
+            int width = int.Parse(XMLHelper.GetAttribute(attributeCollection, "width", "0", false));
+            int height = int.Parse(XMLHelper.GetAttribute(attributeCollection, "height", "0", false));
+            string layout = XMLHelper.GetAttribute(attributeCollection, "layout", "relative", false);
+
+            float depth = float.Parse(XMLHelper.GetAttribute(attributeCollection, "depth", "0", false));
+            UiFrame result = new UiFrame(new Rectangle(x, y, width, height), graphicsDevice, ColorHelper.GetColorFrom(color));
+            result.Name = name;
+            result.LayerDepth = depth;
+
+            switch (layout)
+            {
+                case "none":
+                    result.Layout = FrameLayout.DEFAULT;
+                    break;
+                case "relative":
+                    result.Layout = FrameLayout.RELATIVE; break;
+                case "vertical_list":
+                    result.Layout = FrameLayout.VERTICAL_LIST; break;
+                case "horizontal_list":
+                    result.Layout = FrameLayout.HORIZONTAL_LIST; break;
+                default:
+                    result.Layout = FrameLayout.RELATIVE;
+                    break;
+            }
+            foreach (AbstractUiObject uiObject in frameObjects)
+            {
+                result.AddComponent(uiObject);
+            }
+            return result;
+        }
 
         public override float Scale { 
             get => base.Scale; 

@@ -12,6 +12,7 @@
     "Block": 0,
     "IsLiving": true,
     "Faction": "Human",
+    "Description": "Claim themselves come from Robin Hood clan, but filthy as a rat",
     "Items": []
   },
   {
@@ -24,9 +25,10 @@
     "Health": 6,
     "Armor": 0,
     "Attack": 1,
-    "Block": 0,
+    "Block": 2,
     "IsLiving": true,
     "Faction": "Human",
+    "Description": "Look, its the player!",
     "Items": []
   },
   {
@@ -42,6 +44,7 @@
     "Block": 0,
     "IsLiving": true,
     "Faction": "Undead",
+    "Description": "Wanted to be a musician, now use ribcage to play guitar",
     "Items": []
   },
   {
@@ -57,6 +60,7 @@
     "Block": 0,
     "IsLiving": true,
     "Faction": "Undead",
+    "Description": "Bleh brain bleh bleh...Poor guy just wants some food",
     "Items": []
   },
   {
@@ -72,6 +76,7 @@
     "Block": 0,
     "IsLiving": true,
     "Faction": "Boss",
+    "Description": "Finally, a worthy opponnent! May our battle be legendary!",
     "Items": []
   },
   {
@@ -87,6 +92,7 @@
     "Block": 0,
     "IsLiving": true,
     "Faction": "Animal",
+    "Description": "A random bird in the wild",
     "Items": [ "Egg" ]
   },
   {
@@ -102,6 +108,7 @@
     "Block": 0,
     "IsLiving": true,
     "Faction": "Animal",
+    "Description": "A rabbit appears out of nowhere",
     "Items": []
   }
 ]

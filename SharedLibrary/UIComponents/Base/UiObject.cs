@@ -37,6 +37,11 @@ namespace SharedLibrary.UIComponents.Base
             hoverStyle = Clone();
         }
 
+        public T OriginalStyle
+        {
+            get { return originalStyle; }
+        }
+
         public T HoverStyle
         {
             get { return hoverStyle; }

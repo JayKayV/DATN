@@ -6,7 +6,7 @@ using SharedLibrary.Ultility;
 
 namespace Shared.Gameplay.Units.Enemies
 {
-    public class Bandit : BaseUnit
+    public class Bandit : Unit
     {
         public Bandit(UnitData data): base(data, UnitFaction.Neutral) { }
 
